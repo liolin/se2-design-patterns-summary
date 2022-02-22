@@ -1,0 +1,46 @@
+% Template for SE Project software documentation
+% (c) Farhad Mehta 2021
+
+\documentclass[11pt, oneside, a4paper]{book}
+
+\input{custom}
+
+\hypersetup{
+    pdfauthor={Olivier Lischer},
+    pdftitle={Summary Patterns},
+}
+
+\begin{document}
+
+\pagestyle{empty}
+
+\frontmatter
+
+\input{title-page}
+\tableofcontents
+
+\mainmatter
+
+
+\part{Abstract}
+\input{01_abstract/01_abstract}
+
+
+\part{Design Patterns}
+\chapter{Creational Patterns}
+\input{02_patterns/01_creational}
+
+\chapter{Structural Patterns}
+\input{02_patterns/02_structural}
+
+\chapter{Behavioral Patterns}
+\input{02_patterns/03_beahvioral}
+
+
+\part{Conclusion}
+
+\addcontentsline{toc}{chapter}{Bibliography}
+\bibliographystyle{alpha}
+\bibliography{bibliography}
+
+\end{document}
