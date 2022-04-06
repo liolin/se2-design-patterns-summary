@@ -1,0 +1,90 @@
+#+TITLE: Design Patterns - Summary
+#+AUTHOR: Olivier Lischer
+#+EMAIL: olivier.lischer@ost.ch
+
+#+LATEX_HEADER: \usepackage[utf8]{inputenc}
+#+LATEX_HEADER: \usepackage[table,xcdraw]{xcolor}
+#+LATEX_HEADER: \usepackage{paralist}
+#+LATEX_HEADER: \usepackage{datetime2}
+#+LATEX_HEADER: \usepackage{graphicx}
+#+LATEX_HEADER: \usepackage{lscape}
+#+LATEX_HEADER: \usepackage{longtable}
+#+LATEX_HEADER: \usepackage{hyperref}
+#+LATEX_HEADER: \usepackage[a4paper, left=3cm, right=3cm, top=2cm]{geometry}
+#+LATEX_HEADER: \usepackage{fancyhdr}
+#+LATEX_HEADER: \usepackage{listings}
+#+LATEX_HEADER: \usepackage{textcomp}
+#+LATEX_HEADER: \usepackage{enumitem}
+#+LATEX_HEADER: \usepackage{algorithm}
+#+LATEX_HEADER: \usepackage{algpseudocode}
+
+#+LATEX_HEADER: \setlist{noitemsep}
+#+LATEX_HEADER: \setlength{\columnseprule}{0.2pt}
+#+LATEX_HEADER: \definecolor{mygreen}{rgb}{0,0.6,0}
+#+LATEX_HEADER: \definecolor{mygray}{rgb}{0.5,0.5,0.5}
+#+LATEX_HEADER: \definecolor{mymauve}{rgb}{0.58,0,0.82}
+
+#+LATEX_HEADER: \lstset{ backgroundcolor=\color{white}, basicstyle=\footnotesize, breaklines=true, captionpos=b, commentstyle=\color{mygreen}, escapeinside={\%*}{*)},keywordstyle=\color{blue}, stringstyle=\color{mymauve},}
+
+
+#+begin_src latex
+  \pagestyle{fancy}
+  \fancyhf{}
+  \fancyhead[R]{SEP2-FS}
+  \fancyhead[L]{Design Patterns - Summary}
+  \fancyfoot[CE,CO]{\leftmark}
+  \fancyfoot[R]{\thepage}
+  \fancyfoot[L]{Olivier Lischer}
+
+  \begin{titlepage}
+    \begin{center}
+      {\Huge Design Patterns - Summary} \\
+      \vspace{8 cm}
+
+      \includegraphics[height=4cm]{./img/ost-logo.png}
+
+      \vspace{4 cm}
+      Semester: Spring 2022
+      \vspace{1 cm}
+
+      Version: 0.1.0 \\
+      Date: \DTMnow \\
+      \vspace{3 cm}
+      School of Computer Science\\
+      OST Eastern Switzerland University of Applied Sciences
+    \end{center}
+  \end{titlepage}
+  \newpage
+  \tableofcontents
+  \newpage
+#+end_src
+
+
+* Introduction
+** Most important quotes
+In the introduction the basics of object-oriented programming are explained.
+Therefore, for many this is easy to read.
+However, some important statements are made.
+
+#+begin_quote
+Favor object composition over class inheritance
+#+end_quote
+
+Because it is very difficult to make the correct abstraction often the base class(es) are not complete or have too much in it.
+With object composition you don't have this problem.
+
+#+begin_quote
+Program to an interface, not an implementation
+#+end_quote
+If you implement against interfaces you can test your class with unit tests.
+If you implement against a fixed implementation you can not change this behavior at anytime.
+
+
+** The design patterns
+
+Class Design Patterns deal with the relationships between classes and their subclasses.
+The Object Design Patterns with the object relationships which can be changed at runtime.
+
+#+CAPTION: Design pattern space
+#+NAME: fig:design-pattern-space
+[[file:img/design_pattern_space.png]]
