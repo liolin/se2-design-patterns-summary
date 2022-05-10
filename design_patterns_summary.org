@@ -79,7 +79,6 @@ Program to an interface, not an implementation
 If you implement against interfaces you can test your class with unit tests.
 If you implement against a fixed implementation you can not change this behavior at anytime.
 
-
 ** The design patterns
 
 Class Design Patterns deal with the relationships between classes and their subclasses.
@@ -88,3 +87,77 @@ The Object Design Patterns with the object relationships which can be changed at
 #+CAPTION: Design pattern space
 #+NAME: fig:design-pattern-space
 [[file:img/design_pattern_space.png]]
+
+
+* Creational
+** Abstract Factory
+The Abstract Factory provides an interface for creating families of related or dependent objects without specifying their concrete class.
+It is a good choice, when you want to create big class hierarchy from a factory.
+In general the Simple Factory ([[id:0c32236d-c1d6-439a-b87e-74380041c3af][Design Pattern - Simple Factory]]) is more common today.
+
+
+Motivation:
+- You want to create concrete objects without knowing which concrete type you get.
+- You are only interested in the interface.
+
+
+#+CAPTION: Abstract Factory Class Diagram
+#+NAME: fig:abstract-factory-uml
+[[file:img/abstract_factory.png]]
+
+*** Important Notes
+The Factory must be created at the very beginning of the application.
+After creation only this factory must be used to create objects.
+Otherwise, the benefit of the factory are gone.
+
+** Builder
+The Builder Pattern seperates the construction of a complex class from its representation.
+Therby you can hidde the creation of complex objects behind functions (see listening ref:lst:the-builder-pattern-in-action).
+
+
+#+CAPTION: Builder Class Diagram
+#+NAME: fig:builder-class-diagram
+[[file:img/builder.png]]
+
+
+#+CAPTION: The Builder Pattern in Action
+#+NAME: lst:the-builder-pattern-in-action
+#+begin_src c++
+  Maze* MazeGame::CreateMaze () {
+    Maze* aMaze = new Maze;
+    Room* r1 = new Room(1);
+    Room* r2 = new Room(2);
+    Door* theDoor = new Door(r1, r2);
+    aMaze->AddRoom(r1);
+    aMaze->AddRoom(r2);
+    r1->SetSide(North, new Wall);
+    r1->SetSide(East, theDoor);
+    r1->SetSide(South, new Wall);
+    r1->SetSide(West, new Wall);
+    r2->SetSide(North, new Wall);
+    r2->SetSide(East, new Wall);
+    r2->SetSide(South, new Wall);
+    r2->SetSide(West, theDoor);
+    return aMaze;
+  }
+
+  // With Builder Pattern
+  Maze* MazeGame::CreateMaze (MazeBuilder& builder) {
+    builder.BuildMaze();
+    builder.BuildRoom(1);
+    builder.BuildRoom(2);
+    builder.BuildDoor(1, 2);
+    return builder.GetMaze();
+  }
+#+end_src
+** Factory Method
+The Factory Method is used to create an object, but the subclass decides which class is instantiated.
+With this pattern you can create concrete creators which can decide which concrete product should be created.
+The user of the creator only has to use the interface.
+
+
+#+CAPTION: Factory Method Class Diagram
+#+NAME: fig:factory-method-class-diagram
+[[file:img/factory_method.png]]
+
+** Prototype

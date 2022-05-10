@@ -1,4 +1,4 @@
-% Created 2022-04-06 Wed 18:06
+% Created 2022-05-10 Tue 16:43
 % Intended LaTeX compiler: xelatex
 \documentclass[11pt]{article}
 \usepackage{graphicx}
@@ -10,9 +10,9 @@
 \usepackage{amssymb}
 \usepackage{capt-of}
 \usepackage{hyperref}
-\usepackage[newfloat]{minted}
 \usepackage{color}
 \usepackage{listings}
+\usepackage[newfloat]{minted}
 \usepackage[utf8]{inputenc}
 \usepackage[table,xcdraw]{xcolor}
 \usepackage{paralist}
@@ -78,9 +78,9 @@
 
 
 \section{Introduction}
-\label{sec:org0466c2a}
+\label{sec:org8e2a47a}
 \subsection{Most important quotes}
-\label{sec:org8a0def4}
+\label{sec:org3fd2b32}
 In the introduction the basics of object-oriented programming are explained.
 Therefore, for many this is easy to read.
 However, some important statements are made.
@@ -98,9 +98,8 @@ Program to an interface, not an implementation
 If you implement against interfaces you can test your class with unit tests.
 If you implement against a fixed implementation you can not change this behavior at anytime.
 
-
 \subsection{The design patterns}
-\label{sec:org252e34c}
+\label{sec:org183572f}
 
 Class Design Patterns deal with the relationships between classes and their subclasses.
 The Object Design Patterns with the object relationships which can be changed at runtime.
@@ -108,6 +107,93 @@ The Object Design Patterns with the object relationships which can be changed at
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=.9\linewidth]{img/design_pattern_space.png}
-\caption{\label{fig:org4259c3a}Design pattern space}
+\caption{\label{fig:design-pattern-space}Design pattern space}
 \end{figure}
+
+
+\section{Creational}
+\label{sec:org9bf6940}
+\subsection{Abstract Factory}
+\label{sec:org0c3769f}
+The Abstract Factory provides an interface for creating families of related or dependent objects without specifying their concrete class.
+It is a good choice, when you want to create big class hierarchy from a factory.
+In general the Simple Factory (\href{../../../../roam/20220510160458-design_pattern_simple_factory.org}{Design Pattern - Simple Factory}) is more common today.
+
+
+Motivation:
+\begin{itemize}
+\item You want to create concrete objects without knowing which concrete type you get.
+\item You are only interested in the interface.
+\end{itemize}
+
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.9\linewidth]{img/abstract_factory.png}
+\caption{\label{fig:abstract-factory-uml}Abstract Factory Class Diagram}
+\end{figure}
+
+\subsubsection{Important Notes}
+\label{sec:orga7071df}
+The Factory must be created at the very beginning of the application.
+After creation only this factory must be used to create objects.
+Otherwise, the benefit of the factory are gone.
+
+\subsection{Builder}
+\label{sec:orgf8152a3}
+The Builder Pattern seperates the construction of a complex class from its representation.
+Therby you can hidde the creation of complex objects behind functions (see listening \ref{lst:the-builder-pattern-in-action}).
+
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.9\linewidth]{img/builder.png}
+\caption{\label{fig:builder-class-diagram}Builder Class Diagram}
+\end{figure}
+
+
+\lstset{language=c++,label=lst:the-builder-pattern-in-action,caption={The Builder Pattern in Action},captionpos=b,numbers=none}
+\begin{lstlisting}
+Maze* MazeGame::CreateMaze () {
+  Maze* aMaze = new Maze;
+  Room* r1 = new Room(1);
+  Room* r2 = new Room(2);
+  Door* theDoor = new Door(r1, r2);
+  aMaze->AddRoom(r1);
+  aMaze->AddRoom(r2);
+  r1->SetSide(North, new Wall);
+  r1->SetSide(East, theDoor);
+  r1->SetSide(South, new Wall);
+  r1->SetSide(West, new Wall);
+  r2->SetSide(North, new Wall);
+  r2->SetSide(East, new Wall);
+  r2->SetSide(South, new Wall);
+  r2->SetSide(West, theDoor);
+  return aMaze;
+}
+
+// With Builder Pattern
+Maze* MazeGame::CreateMaze (MazeBuilder& builder) {
+  builder.BuildMaze();
+  builder.BuildRoom(1);
+  builder.BuildRoom(2);
+  builder.BuildDoor(1, 2);
+  return builder.GetMaze();
+}
+\end{lstlisting}
+\subsection{Factory Method}
+\label{sec:orgd5db324}
+The Factory Method is used to create an object, but the subclass decides which class is instantiated.
+With this pattern you can create concrete creators which can decide which concrete product should be created.
+The user of the creator only has to use the interface.
+
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.9\linewidth]{img/factory_method.png}
+\caption{\label{fig:factory-method-class-diagram}Factory Method Class Diagram}
+\end{figure}
+
+\subsection{Prototype}
+\label{sec:org2935abf}
 \end{document}
