@@ -269,4 +269,69 @@ During the implementation you have to decide if you want to do a deep copy or a 
   }
 #+end_src
 
+*** Singleton
+The Singleton pattern ensures that a class has only one (global) instance.
+Additionally, it provides easy access to this element.
 
+However, you should *NOT* use it in your software.
+It is basically a global variable.
+Therefore, not testable and difficult to maintain.
+
+If you want something like singleton, you should use a simple factory ([[id:0c32236d-c1d6-439a-b87e-74380041c3af][Design Pattern - Simple Factory]]) which always returns the same instance.
+
+
+#+CAPTION: Singelton alternative in code
+#+NAME: lst:singelton-alternative-in-code
+#+begin_src csharp
+  class SingletonFactory {
+      private static object myInstance;
+
+      createObject() {
+	  if (SingletonFactory.myInstance == null) {
+	      SingletonFactory.myInstance = new();
+	  }
+	  return SingletonFactory.myInstance;
+      }
+  }
+#+end_src
+
+#+CAPTION: Singelton Class Diagram
+#+NAME: fig:singelton-class-diagram
+[[file:img/singleton.png]]
+
+** Structural Patterns
+*** Adapter
+The Adapter Design Pattern is used to make a class compatible to others (like a power adapter).
+The adapter pattern has two different types:
+- class adapter
+- object adapter
+
+
+Both patterns do the same thing.
+The class adapter inherits from the target *AND* from the adaptee (ref:fig:class-adapter-class-diagram).
+The object adapter inherits only from the target and holds the adaptee as an instance variable (ref:fig:object-adapter-class-diagram).
+
+The class adapter is not often used because many languages do not support multi-inheritance, and you should favor object composition over class inheritance.
+
+#+CAPTION: Class Adapter Class Diagram
+#+NAME: fig:class-adapter-class-diagram
+[[file:img/class_adapter.png]]
+
+#+CAPTION: Object Adapter Class Diagram
+#+NAME: fig:object-adapter-class-diagram
+[[file:img/object_adapter.png]]
+*** Bridge
+The Bridge Design Pattern is used to decouple an abstraction from its implementation so that the two can vary independently.
+
+**** Example
+Your application should support multiple window systems (X, Windows).
+The client (your application) should be able to create windows, without committing to a concrete implementation.
+Only your window implementation should depend on the target platform (X, Windows).
+
+#+CAPTION: Bridge Design Pattern Example
+#+NAME: fig:bridge-design-pattern-example
+[[file:img/bridge_example.png]]
+
+#+CAPTION: Bridge Class Diagram
+#+NAME: fig:bridge-class-diagram
+[[file:img/bridge.png]]

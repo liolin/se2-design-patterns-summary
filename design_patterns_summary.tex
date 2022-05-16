@@ -1,4 +1,4 @@
-% Created 2022-05-10 Tue 17:10
+% Created 2022-05-16 Mon 08:09
 % Intended LaTeX compiler: xelatex
 \documentclass[11pt]{article}
 \usepackage{graphicx}
@@ -78,9 +78,9 @@
 
 
 \section{Introduction}
-\label{sec:orgcd2e2f7}
+\label{sec:org9b04da4}
 \subsection{Most important quotes}
-\label{sec:org55fc7ed}
+\label{sec:orgefa0e8f}
 In the introduction the basics of object-oriented programming are explained.
 Therefore, for many this is easy to read.
 However, some important statements are made.
@@ -99,7 +99,7 @@ If you implement against interfaces you can test your class with unit tests.
 If you implement against a fixed implementation you can not change this behavior at anytime.
 
 \subsection{The design patterns}
-\label{sec:org3ec0334}
+\label{sec:orgc27137e}
 
 Class Design Patterns deal with the relationships between classes and their subclasses.
 The Object Design Patterns with the object relationships which can be changed at runtime.
@@ -111,7 +111,7 @@ The Object Design Patterns with the object relationships which can be changed at
 \end{figure}
 
 \subsection{The Most common causes of redesign}
-\label{sec:orgca12e18}
+\label{sec:orgffe0a5e}
 
 
 A list of the most common causes of redesign and how you could solve the problem.
@@ -178,11 +178,11 @@ The following Design Patterns can help to work around this problem.
 
 
 \section{Design Patterns}
-\label{sec:orgbed9452}
+\label{sec:org6c4c541}
 \subsection{Creational}
-\label{sec:orgcf0a459}
+\label{sec:org2da295b}
 \subsubsection{Abstract Factory}
-\label{sec:orge227c65}
+\label{sec:org4d0813f}
 The Abstract Factory provides an interface for creating families of related or dependent objects without specifying their concrete class.
 It is a good choice, when you want to create big class hierarchy from a factory.
 In general the Simple Factory (\href{../../../../roam/20220510160458-design_pattern_simple_factory.org}{Design Pattern - Simple Factory}) is more common today.
@@ -203,14 +203,14 @@ Motivation:
 
 \begin{enumerate}
 \item Important Notes
-\label{sec:org06bfeb2}
+\label{sec:org8f5304e}
 The Factory must be created at the very beginning of the application.
 After creation only this factory must be used to create objects.
 Otherwise, the benefit of the factory are gone.
 \end{enumerate}
 
 \subsubsection{Builder}
-\label{sec:orgb514e1a}
+\label{sec:org3f79a04}
 The Builder Pattern seperates the construction of a complex class from its representation.
 Therby you can hidde the creation of complex objects behind functions (see listening \ref{lst:the-builder-pattern-in-action}).
 
@@ -252,7 +252,7 @@ Maze* MazeGame::CreateMaze (MazeBuilder& builder) {
 }
 \end{lstlisting}
 \subsubsection{Factory Method}
-\label{sec:orgf253723}
+\label{sec:orgeb086de}
 The Factory Method is used to create an object, but the subclass decides which class is instantiated.
 With this pattern you can create concrete creators which can decide which concrete product should be created.
 The user of the creator only has to use the interface.
@@ -265,7 +265,7 @@ The user of the creator only has to use the interface.
 \end{figure}
 
 \subsubsection{Prototype}
-\label{sec:orgb43042e}
+\label{sec:org2f29413}
 The prototype pattern is something similar like the factory method (\href{../../../../roam/20220413195351-design_pattern_factory_method.org}{Design Pattern - Factory Method}) is for classes.
 Using the prototype pattern you create copies from concrete objects.
 This is achieved by cloning the prototype.
@@ -273,7 +273,7 @@ This is achieved by cloning the prototype.
 
 \begin{enumerate}
 \item Important Notes
-\label{sec:org9194bb4}
+\label{sec:org7e2fb5c}
 The crucial part of this pattern is the \texttt{Clone()} function.
 During the implementation you have to decide if you want to do a deep copy or a shallow copy.
 
@@ -312,5 +312,90 @@ Maze MazePrototypeFactory::MakeMaze () {
   return this->_prototypeMaze;
 }
 \end{lstlisting}
+\end{enumerate}
+
+\subsubsection{Singleton}
+\label{sec:org039f580}
+The Singleton pattern ensures that a class has only one (global) instance.
+Additionally, it provides easy access to this element.
+
+However, you should \textbf{NOT} use it in your software.
+It is basically a global variable.
+Therefore, not testable and difficult to maintain.
+
+If you want something like singleton, you should use a simple factory (\href{../../../../roam/20220510160458-design_pattern_simple_factory.org}{Design Pattern - Simple Factory}) which always returns the same instance.
+
+
+\lstset{language=csharp,label=lst:singelton-alternative-in-code,caption={Singelton alternative in code},captionpos=b,numbers=none}
+\begin{lstlisting}
+class SingletonFactory {
+    private static object myInstance;
+
+    createObject() {
+	if (SingletonFactory.myInstance == null) {
+	    SingletonFactory.myInstance = new();
+	}
+	return SingletonFactory.myInstance;
+    }
+}
+\end{lstlisting}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.9\linewidth]{img/singleton.png}
+\caption{\label{fig:singelton-class-diagram}Singelton Class Diagram}
+\end{figure}
+
+\subsection{Structural Patterns}
+\label{sec:org238eb42}
+\subsubsection{Adapter}
+\label{sec:org66c162f}
+The Adapter Design Pattern is used to make a class compatible to others (like a power adapter).
+The adapter pattern has two different types:
+\begin{itemize}
+\item class adapter
+\item object adapter
+\end{itemize}
+
+
+Both patterns do the same thing.
+The class adapter inherits from the target \textbf{AND} from the adaptee (\ref{fig:class-adapter-class-diagram}).
+The object adapter inherits only from the target and holds the adaptee as an instance variable (\ref{fig:object-adapter-class-diagram}).
+
+The class adapter is not often used because many languages do not support multi-inheritance, and you should favor object composition over class inheritance.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.9\linewidth]{img/class_adapter.png}
+\caption{\label{fig:class-adapter-class-diagram}Class Adapter Class Diagram}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.9\linewidth]{img/object_adapter.png}
+\caption{\label{fig:object-adapter-class-diagram}Object Adapter Class Diagram}
+\end{figure}
+\subsubsection{Bridge}
+\label{sec:org0cee922}
+The Bridge Design Pattern is used to decouple an abstraction from its implementation so that the two can vary independently.
+
+\begin{enumerate}
+\item Example
+\label{sec:org82e2658}
+Your application should support multiple window systems (X, Windows).
+The client (your application) should be able to create windows, without committing to a concrete implementation.
+Only your window implementation should depend on the target platform (X, Windows).
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.9\linewidth]{img/bridge_example.png}
+\caption{\label{fig:bridge-design-pattern-example}Bridge Design Pattern Example}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.9\linewidth]{img/bridge.png}
+\caption{\label{fig:bridge-class-diagram}Bridge Class Diagram}
+\end{figure}
 \end{enumerate}
 \end{document}
