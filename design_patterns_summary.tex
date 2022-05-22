@@ -1,4 +1,4 @@
-% Created 2022-05-16 Mon 08:09
+% Created 2022-05-22 Sun 10:09
 % Intended LaTeX compiler: xelatex
 \documentclass[11pt]{article}
 \usepackage{graphicx}
@@ -78,9 +78,9 @@
 
 
 \section{Introduction}
-\label{sec:org9b04da4}
+\label{sec:org5c78ac4}
 \subsection{Most important quotes}
-\label{sec:orgefa0e8f}
+\label{sec:org6323a62}
 In the introduction the basics of object-oriented programming are explained.
 Therefore, for many this is easy to read.
 However, some important statements are made.
@@ -99,7 +99,7 @@ If you implement against interfaces you can test your class with unit tests.
 If you implement against a fixed implementation you can not change this behavior at anytime.
 
 \subsection{The design patterns}
-\label{sec:orgc27137e}
+\label{sec:org67fce6a}
 
 Class Design Patterns deal with the relationships between classes and their subclasses.
 The Object Design Patterns with the object relationships which can be changed at runtime.
@@ -111,7 +111,7 @@ The Object Design Patterns with the object relationships which can be changed at
 \end{figure}
 
 \subsection{The Most common causes of redesign}
-\label{sec:orgffe0a5e}
+\label{sec:org217df1a}
 
 
 A list of the most common causes of redesign and how you could solve the problem.
@@ -178,11 +178,11 @@ The following Design Patterns can help to work around this problem.
 
 
 \section{Design Patterns}
-\label{sec:org6c4c541}
+\label{sec:orgbbd5b97}
 \subsection{Creational}
-\label{sec:org2da295b}
+\label{sec:org7112a81}
 \subsubsection{Abstract Factory}
-\label{sec:org4d0813f}
+\label{sec:orgf3caf69}
 The Abstract Factory provides an interface for creating families of related or dependent objects without specifying their concrete class.
 It is a good choice, when you want to create big class hierarchy from a factory.
 In general the Simple Factory (\href{../../../../roam/20220510160458-design_pattern_simple_factory.org}{Design Pattern - Simple Factory}) is more common today.
@@ -203,14 +203,14 @@ Motivation:
 
 \begin{enumerate}
 \item Important Notes
-\label{sec:org8f5304e}
+\label{sec:orgc7c3199}
 The Factory must be created at the very beginning of the application.
 After creation only this factory must be used to create objects.
 Otherwise, the benefit of the factory are gone.
 \end{enumerate}
 
 \subsubsection{Builder}
-\label{sec:org3f79a04}
+\label{sec:org044b549}
 The Builder Pattern seperates the construction of a complex class from its representation.
 Therby you can hidde the creation of complex objects behind functions (see listening \ref{lst:the-builder-pattern-in-action}).
 
@@ -252,7 +252,7 @@ Maze* MazeGame::CreateMaze (MazeBuilder& builder) {
 }
 \end{lstlisting}
 \subsubsection{Factory Method}
-\label{sec:orgeb086de}
+\label{sec:org062838a}
 The Factory Method is used to create an object, but the subclass decides which class is instantiated.
 With this pattern you can create concrete creators which can decide which concrete product should be created.
 The user of the creator only has to use the interface.
@@ -265,7 +265,7 @@ The user of the creator only has to use the interface.
 \end{figure}
 
 \subsubsection{Prototype}
-\label{sec:org2f29413}
+\label{sec:org5a3f4f4}
 The prototype pattern is something similar like the factory method (\href{../../../../roam/20220413195351-design_pattern_factory_method.org}{Design Pattern - Factory Method}) is for classes.
 Using the prototype pattern you create copies from concrete objects.
 This is achieved by cloning the prototype.
@@ -273,7 +273,7 @@ This is achieved by cloning the prototype.
 
 \begin{enumerate}
 \item Important Notes
-\label{sec:org7e2fb5c}
+\label{sec:org9953828}
 The crucial part of this pattern is the \texttt{Clone()} function.
 During the implementation you have to decide if you want to do a deep copy or a shallow copy.
 
@@ -315,7 +315,7 @@ Maze MazePrototypeFactory::MakeMaze () {
 \end{enumerate}
 
 \subsubsection{Singleton}
-\label{sec:org039f580}
+\label{sec:org74ecd2f}
 The Singleton pattern ensures that a class has only one (global) instance.
 Additionally, it provides easy access to this element.
 
@@ -347,9 +347,9 @@ class SingletonFactory {
 \end{figure}
 
 \subsection{Structural Patterns}
-\label{sec:org238eb42}
+\label{sec:org2916040}
 \subsubsection{Adapter}
-\label{sec:org66c162f}
+\label{sec:org3b730ec}
 The Adapter Design Pattern is used to make a class compatible to others (like a power adapter).
 The adapter pattern has two different types:
 \begin{itemize}
@@ -376,12 +376,12 @@ The class adapter is not often used because many languages do not support multi-
 \caption{\label{fig:object-adapter-class-diagram}Object Adapter Class Diagram}
 \end{figure}
 \subsubsection{Bridge}
-\label{sec:org0cee922}
+\label{sec:orgb8c48d6}
 The Bridge Design Pattern is used to decouple an abstraction from its implementation so that the two can vary independently.
 
 \begin{enumerate}
 \item Example
-\label{sec:org82e2658}
+\label{sec:org03543e8}
 Your application should support multiple window systems (X, Windows).
 The client (your application) should be able to create windows, without committing to a concrete implementation.
 Only your window implementation should depend on the target platform (X, Windows).
@@ -398,4 +398,55 @@ Only your window implementation should depend on the target platform (X, Windows
 \caption{\label{fig:bridge-class-diagram}Bridge Class Diagram}
 \end{figure}
 \end{enumerate}
+
+\subsubsection{Composite}
+\label{sec:org0dbb880}
+The Composite Design Pattern is used to model a part-whole hierarchy.
+The pattern let clients treat individual and compositions of objects uniformly.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.9\linewidth]{img/compsite_graph.png}
+\caption{\label{fig:a-composite-structure}A Composite Structure}
+\end{figure}
+
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.9\linewidth]{img/composite.png}
+\caption{\label{fig:composite-diagram}Composite Diagram}
+\end{figure}
+
+
+\begin{enumerate}
+\item Example
+\label{sec:org7c0e9c3}
+It exists many kinds of graphics and forms (Line, Rectangle, Picture, \ldots{}).
+If the client wants to draw any graphic, it does not care how draw.
+Therefore, we need one function (\texttt{draw}) for all kind of graphics.
+However, a picture consists of many lines, rectangles and more graphics.
+This picture class has some more functions (\texttt{Add}, \texttt{Remove}, \texttt{GetChild}).
+The \texttt{Draw} function iterates over all children and calls their \texttt{Draw} function.
+
+
+
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.9\linewidth]{img/example_of_composite.png}
+\caption{\label{fig:example-of-composite}Example of Composite}
+\end{figure}
+\end{enumerate}
+\subsubsection{Decorator}
+\label{sec:orgf013ada}
+The Decorater Pattern is used to attach additional responsibility (features) to an object dynamically.
+For example, a class implements only the login mechanism.
+Using the decorater pattern exception handling can be done in a separate class.
+
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.9\linewidth]{img/decorater.png}
+\caption{\label{fig:decrater-diagram}Decrater Diagram}
+\end{figure}
 \end{document}

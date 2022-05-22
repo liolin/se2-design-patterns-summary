@@ -335,3 +335,67 @@ Only your window implementation should depend on the target platform (X, Windows
 #+CAPTION: Bridge Class Diagram
 #+NAME: fig:bridge-class-diagram
 [[file:img/bridge.png]]
+
+*** Composite
+The Composite Design Pattern is used to model a part-whole hierarchy.
+The pattern let clients treat individual and compositions of objects uniformly.
+
+#+begin_src dot :file img/compsite_graph.png 
+  digraph G {
+   root [shape=box, label=aComposite]
+
+   composite1 [shape=box, label=aComposite]
+   leaf11 [label=aLeaf]
+   leaf12 [label=aLeaf]
+   leaf13 [label=aLeaf]
+
+   leaf21 [label=aLeaf]
+   leaf22 [label=aLeaf]
+   leaf23 [label=aLeaf]
+
+   root -> leaf11; 
+   root -> leaf12; 
+   root -> composite1
+   root -> leaf13; 
+
+   composite1 -> leaf21;
+   composite1 -> leaf22;
+   composite1 -> leaf23;
+   }
+#+end_src
+
+#+CAPTION: A Composite Structure
+#+NAME: fig:a-composite-structure
+#+RESULTS:
+[[file:img/compsite_graph.png]]
+
+
+#+CAPTION: Composite Diagram
+#+NAME: fig:composite-diagram
+[[file:img/composite.png]]
+
+
+**** Example
+It exists many kinds of graphics and forms (Line, Rectangle, Picture, ...).
+If the client wants to draw any graphic, it does not care how draw.
+Therefore, we need one function (=draw=) for all kind of graphics.
+However, a picture consists of many lines, rectangles and more graphics.
+This picture class has some more functions (=Add=, =Remove=, =GetChild=).
+The =Draw= function iterates over all children and calls their =Draw= function.
+
+
+
+
+#+CAPTION: Example of Composite
+#+NAME: fig:example-of-composite
+[[file:img/example_of_composite.png]]
+*** Decorator
+The Decorater Pattern is used to attach additional responsibility (features) to an object dynamically.
+For example, a class implements only the login mechanism.
+Using the decorater pattern exception handling can be done in a separate class.
+
+
+#+CAPTION: Decrater Diagram
+#+NAME: fig:decrater-diagram
+[[file:img/decorater.png]]
+
