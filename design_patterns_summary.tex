@@ -1,4 +1,4 @@
-% Created 2022-05-22 Sun 13:40
+% Created 2022-05-22 Sun 13:58
 % Intended LaTeX compiler: xelatex
 \documentclass[11pt]{article}
 \usepackage{graphicx}
@@ -78,9 +78,9 @@
 
 
 \section{Introduction}
-\label{sec:org1f92b24}
+\label{sec:orge74014f}
 \subsection{Most important quotes}
-\label{sec:org9fe9ffe}
+\label{sec:org46628b6}
 In the introduction the basics of object-oriented programming are explained.
 Therefore, for many this is easy to read.
 However, some important statements are made.
@@ -99,7 +99,7 @@ If you implement against interfaces you can test your class with unit tests.
 If you implement against a fixed implementation you can not change this behavior at anytime.
 
 \subsection{The design patterns}
-\label{sec:orgdf3c563}
+\label{sec:org567b8d8}
 
 Class Design Patterns deal with the relationships between classes and their subclasses.
 The Object Design Patterns with the object relationships which can be changed at runtime.
@@ -112,14 +112,14 @@ The Object Design Patterns with the object relationships which can be changed at
 
 
 \section{Design Patterns}
-\label{sec:org728c4a9}
-\subsection{Creational}
-\label{sec:orgd237e5b}
+\label{sec:org5a930ff}
+\subsection{Creational Patterns}
+\label{sec:org59fc60b}
 \subsubsection{Abstract Factory}
-\label{sec:orgc45a845}
+\label{sec:org087cc6a}
 The Abstract Factory provides an interface for creating families of related or dependent objects without specifying their concrete class.
 It is a good choice, when you want to create big class hierarchy from a factory.
-In general the Simple Factory (\href{../../../../roam/20220510160458-design_pattern_simple_factory.org}{Design Pattern - Simple Factory}) is more common today.
+In general the Simple Factory is more common today.
 
 
 Motivation:
@@ -137,14 +137,14 @@ Motivation:
 
 \begin{enumerate}
 \item Important Notes
-\label{sec:orgf608600}
+\label{sec:org4889256}
 The Factory must be created at the very beginning of the application.
 After creation only this factory must be used to create objects.
 Otherwise, the benefit of the factory are gone.
 \end{enumerate}
 
 \subsubsection{Builder}
-\label{sec:org1178523}
+\label{sec:org73e191f}
 The Builder Pattern seperates the construction of a complex class from its representation.
 Therby you can hidde the creation of complex objects behind functions (see listening \ref{lst:the-builder-pattern-in-action}).
 
@@ -186,7 +186,7 @@ Maze* MazeGame::CreateMaze (MazeBuilder& builder) {
 }
 \end{lstlisting}
 \subsubsection{Factory Method}
-\label{sec:org17ea09f}
+\label{sec:org5016149}
 The Factory Method is used to create an object, but the subclass decides which class is instantiated.
 With this pattern you can create concrete creators which can decide which concrete product should be created.
 The user of the creator only has to use the interface.
@@ -199,15 +199,15 @@ The user of the creator only has to use the interface.
 \end{figure}
 
 \subsubsection{Prototype}
-\label{sec:orga4ec4c7}
-The prototype pattern is something similar like the factory method (\href{../../../../roam/20220413195351-design_pattern_factory_method.org}{Design Pattern - Factory Method}) is for classes.
+\label{sec:orgbc94cb9}
+The prototype pattern is something similar like the factory method is for classes.
 Using the prototype pattern you create copies from concrete objects.
 This is achieved by cloning the prototype.
 
 
 \begin{enumerate}
 \item Important Notes
-\label{sec:orgc256503}
+\label{sec:orge943eef}
 The crucial part of this pattern is the \texttt{Clone()} function.
 During the implementation you have to decide if you want to do a deep copy or a shallow copy.
 
@@ -249,7 +249,7 @@ Maze MazePrototypeFactory::MakeMaze () {
 \end{enumerate}
 
 \subsubsection{Singleton}
-\label{sec:orga47f891}
+\label{sec:orgc8f5fe9}
 The Singleton pattern ensures that a class has only one (global) instance.
 Additionally, it provides easy access to this element.
 
@@ -257,7 +257,7 @@ However, you should \textbf{NOT} use it in your software.
 It is basically a global variable.
 Therefore, not testable and difficult to maintain.
 
-If you want something like singleton, you should use a simple factory (\href{../../../../roam/20220510160458-design_pattern_simple_factory.org}{Design Pattern - Simple Factory}) which always returns the same instance.
+If you want something like singleton, you should use a simple factory which always returns the same instance.
 
 
 \lstset{language=csharp,label=lst:singelton-alternative-in-code,caption={Singelton alternative in code},captionpos=b,numbers=none}
@@ -281,9 +281,9 @@ class SingletonFactory {
 \end{figure}
 
 \subsection{Structural Patterns}
-\label{sec:orgbbabb8d}
+\label{sec:org74dbdbc}
 \subsubsection{Adapter}
-\label{sec:org7ce6645}
+\label{sec:orgcad73a5}
 The Adapter Design Pattern is used to make a class compatible to others (like a power adapter).
 The adapter pattern has two different types:
 \begin{itemize}
@@ -310,12 +310,12 @@ The class adapter is not often used because many languages do not support multi-
 \caption{\label{fig:object-adapter-class-diagram}Object Adapter Class Diagram}
 \end{figure}
 \subsubsection{Bridge}
-\label{sec:org93a7ab0}
+\label{sec:org36b5e69}
 The Bridge Design Pattern is used to decouple an abstraction from its implementation so that the two can vary independently.
 
 \begin{enumerate}
 \item Example
-\label{sec:orge64318a}
+\label{sec:org2598878}
 Your application should support multiple window systems (X, Windows).
 The client (your application) should be able to create windows, without committing to a concrete implementation.
 Only your window implementation should depend on the target platform (X, Windows).
@@ -334,7 +334,7 @@ Only your window implementation should depend on the target platform (X, Windows
 \end{enumerate}
 
 \subsubsection{Composite}
-\label{sec:orgec9083e}
+\label{sec:orgb098f0e}
 The Composite Design Pattern is used to model a part-whole hierarchy.
 The pattern let clients treat individual and compositions of objects uniformly.
 
@@ -354,7 +354,7 @@ The pattern let clients treat individual and compositions of objects uniformly.
 
 \begin{enumerate}
 \item Example
-\label{sec:org4dfe066}
+\label{sec:org1e2b3cc}
 It exists many kinds of graphics and forms (Line, Rectangle, Picture, \ldots{}).
 If the client wants to draw any graphic, it does not care how draw.
 Therefore, we need one function (\texttt{draw}) for all kind of graphics.
@@ -372,7 +372,7 @@ The \texttt{Draw} function iterates over all children and calls their \texttt{Dr
 \end{figure}
 \end{enumerate}
 \subsubsection{Decorator}
-\label{sec:orgb6929a1}
+\label{sec:org5fc6f7c}
 The Decorater Pattern is used to attach additional responsibility (features) to an object dynamically.
 For example, a class implements only the login mechanism.
 Using the decorater pattern exception handling can be done in a separate class.
@@ -386,7 +386,7 @@ Using the decorater pattern exception handling can be done in a separate class.
 
 
 \subsubsection{Facade}
-\label{sec:org7d96c0a}
+\label{sec:org7bfea9a}
 The Facade Design Pattern is used to provide a simple interface to set of interfaces (subsystem).
 For example the Compiler class provide an easy to use interface for the whole compiler subsystem (figure \ref{fig:facade-example}).
 
@@ -404,33 +404,24 @@ For example the Compiler class provide an easy to use interface for the whole co
 \caption{\label{fig:facade-example}Facade Example}
 \end{figure}
 \subsubsection{Flyweight}
-\label{sec:org756e250}
+\label{sec:org4503c0c}
+The Flyweight pattern is used to support large number of objects efficiently.
+For example, you can store every character in its own object.
+In a document with 1000 characters you need more than 1000 objects.
+The Flyweight pattern helps here.
 
-The Proxy Design pattern provides a surrogate or placeholder for another object to control access to it.
-
-A Feed Reader must load the news from a (slow) server.
-When a frontend want to display the news before the data are availabel you have to provide a loading screen.
-This can be easely done using the ProxyPattern.
-
-The Proxy accepts the request, checks if the data are avaiable.
-If not, it provides the login screen.
-If the news are loaded, it returns the news.
+In the Flyweight class is only state indecent stuff stored.
+Therefore, the Flyweight is shareable.
+Instead, creating every time a new object with the character "a" you always reference to the same object.
 
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=.9\linewidth]{img/proxy.png}
-\caption{\label{fig:proxy-class-diagram}Proxy Class Diagram}
-\end{figure}
-
-
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=.9\linewidth]{img/proxy_object_diagram.png}
-\caption{\label{fig:object-diagram-for-proxy}Object Diagram for proxy}
+\includegraphics[width=.9\linewidth]{img/flyweight_example.png}
+\caption{\label{fig:flyweight-example}Flyweight Example}
 \end{figure}
 \subsubsection{Proxy}
-\label{sec:org3c4a4d4}
+\label{sec:orgb4f6d61}
 The Proxy Design pattern provides a surrogate or placeholder for another object to control access to it.
 
 A Feed Reader must load the news from a (slow) server.
@@ -453,5 +444,47 @@ If the news are loaded, it returns the news.
 \centering
 \includegraphics[width=.9\linewidth]{img/proxy_object_diagram.png}
 \caption{\label{fig:object-diagram-for-proxy}Object Diagram for proxy}
+\end{figure}
+
+\subsection{Behaviourla Patterns}
+\label{sec:orgd673747}
+\subsubsection{Chain of Responsibility}
+\label{sec:org9869e89}
+The Chain of Responsibility is used to decouple the sender of a request to its receiver by giving more than one class the change to handle the request.
+The first object takes the request, check if it can handle.
+When yes, then handle it.
+If not, forward the request to the parent / successor.
+
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.9\linewidth]{img/chain_of_responsibility_sequence.png}
+\caption{\label{fig:the-sequence-of-a-chain-of-responsibility}The Sequence of a Chain of Responsibility}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.9\linewidth]{img/chain_of_responsibility.png}
+\caption{\label{fig:chain-of-responsibility-class-diagram}Chain of Responsibility Class Diagram}
+\end{figure}
+
+\subsubsection{Command}
+\label{sec:org4260500}
+The command pattern is used to encapsulate actions / request inside an object.
+For example, the design of a framework does not know which action the button should perform.
+Therefore, the button is created using a command as parameter.
+As soon as the user clicks on the button, the button executions the \texttt{command.Execute()} function.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.9\linewidth]{img/command.png}
+\caption{\label{fig:command-class-diagram}Command Class Diagram}
+\end{figure}
+
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.9\linewidth]{img/example_of_command.png}
+\caption{\label{fig:example-of-command-pattern}Example of Command Pattern}
 \end{figure}
 \end{document}

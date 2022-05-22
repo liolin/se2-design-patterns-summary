@@ -90,11 +90,11 @@ The Object Design Patterns with the object relationships which can be changed at
 
 
 * Design Patterns
-** Creational
+** Creational Patterns
 *** Abstract Factory
 The Abstract Factory provides an interface for creating families of related or dependent objects without specifying their concrete class.
 It is a good choice, when you want to create big class hierarchy from a factory.
-In general the Simple Factory ([[id:0c32236d-c1d6-439a-b87e-74380041c3af][Design Pattern - Simple Factory]]) is more common today.
+In general the Simple Factory is more common today.
 
 
 Motivation:
@@ -162,7 +162,7 @@ The user of the creator only has to use the interface.
 [[file:img/factory_method.png]]
 
 *** Prototype
-The prototype pattern is something similar like the factory method ([[id:2d54848d-995e-423c-b60b-4867b0731b68][Design Pattern - Factory Method]]) is for classes.
+The prototype pattern is something similar like the factory method is for classes.
 Using the prototype pattern you create copies from concrete objects.
 This is achieved by cloning the prototype.
 
@@ -214,7 +214,7 @@ However, you should *NOT* use it in your software.
 It is basically a global variable.
 Therefore, not testable and difficult to maintain.
 
-If you want something like singleton, you should use a simple factory ([[id:0c32236d-c1d6-439a-b87e-74380041c3af][Design Pattern - Simple Factory]]) which always returns the same instance.
+If you want something like singleton, you should use a simple factory which always returns the same instance.
 
 
 #+CAPTION: Singelton alternative in code
@@ -351,26 +351,23 @@ For example the Compiler class provide an easy to use interface for the whole co
 #+NAME: fig:facade-example 
 [[file:img/facade_example.png]]
 *** Flyweight
+The Flyweight pattern is used to support large number of objects efficiently.
+For example, you can store every character in its own object.
+In a document with 1000 characters you need more than 1000 objects.
+The Flyweight pattern helps here.
 
-The Proxy Design pattern provides a surrogate or placeholder for another object to control access to it.
-
-A Feed Reader must load the news from a (slow) server.
-When a frontend want to display the news before the data are availabel you have to provide a loading screen.
-This can be easely done using the ProxyPattern.
-
-The Proxy accepts the request, checks if the data are avaiable.
-If not, it provides the login screen.
-If the news are loaded, it returns the news.
+In the Flyweight class is only state indecent stuff stored.
+Therefore, the Flyweight is shareable.
+Instead, creating every time a new object with the character "a" you always reference to the same object.
 
 
-#+CAPTION: Proxy Class Diagram
-#+NAME: fig:proxy-class-diagram
-[[file:img/proxy.png]]
+#+CAPTION: Flyweight Example
+#+NAME: fig:flyweight-example
+[[file:img/flyweight_example.png]]
 
 
-#+CAPTION: Object Diagram for proxy
-#+NAME: fig:object-diagram-for-proxy
-[[file:img/proxy_object_diagram.png]]
+#+CAPTION: Flyweight Class Diagram
+#+NAME: fig:flyweight-class-diagram
 *** Proxy
 The Proxy Design pattern provides a surrogate or placeholder for another object to control access to it.
 
@@ -391,3 +388,34 @@ If the news are loaded, it returns the news.
 #+CAPTION: Object Diagram for proxy
 #+NAME: fig:object-diagram-for-proxy
 [[file:img/proxy_object_diagram.png]]
+
+** Behaviourla Patterns
+*** Chain of Responsibility
+The Chain of Responsibility is used to decouple the sender of a request to its receiver by giving more than one class the change to handle the request.
+The first object takes the request, check if it can handle.
+When yes, then handle it.
+If not, forward the request to the parent / successor.
+
+
+#+CAPTION: The Sequence of a Chain of Responsibility
+#+NAME: fig:the-sequence-of-a-chain-of-responsibility
+[[file:img/chain_of_responsibility_sequence.png]]
+
+#+CAPTION: Chain of Responsibility Class Diagram
+#+NAME: fig:chain-of-responsibility-class-diagram
+[[file:img/chain_of_responsibility.png]]
+
+*** Command
+The command pattern is used to encapsulate actions / request inside an object.
+For example, the design of a framework does not know which action the button should perform.
+Therefore, the button is created using a command as parameter.
+As soon as the user clicks on the button, the button executions the =command.Execute()= function.
+
+#+CAPTION: Command Class Diagram
+#+NAME: fig:command-class-diagram
+[[file:img/command.png]]
+
+
+#+CAPTION: Example of Command Pattern
+#+NAME: fig:example-of-command-pattern
+[[file:img/example_of_command.png]]
