@@ -1,4 +1,4 @@
-% Created 2022-05-22 Sun 10:09
+% Created 2022-05-22 Sun 13:40
 % Intended LaTeX compiler: xelatex
 \documentclass[11pt]{article}
 \usepackage{graphicx}
@@ -78,9 +78,9 @@
 
 
 \section{Introduction}
-\label{sec:org5c78ac4}
+\label{sec:org1f92b24}
 \subsection{Most important quotes}
-\label{sec:org6323a62}
+\label{sec:org9fe9ffe}
 In the introduction the basics of object-oriented programming are explained.
 Therefore, for many this is easy to read.
 However, some important statements are made.
@@ -99,7 +99,7 @@ If you implement against interfaces you can test your class with unit tests.
 If you implement against a fixed implementation you can not change this behavior at anytime.
 
 \subsection{The design patterns}
-\label{sec:org67fce6a}
+\label{sec:orgdf3c563}
 
 Class Design Patterns deal with the relationships between classes and their subclasses.
 The Object Design Patterns with the object relationships which can be changed at runtime.
@@ -110,79 +110,13 @@ The Object Design Patterns with the object relationships which can be changed at
 \caption{\label{fig:design-pattern-space}Design pattern space}
 \end{figure}
 
-\subsection{The Most common causes of redesign}
-\label{sec:org217df1a}
-
-
-A list of the most common causes of redesign and how you could solve the problem.
-
-\begin{enumerate}
-\item Creating an object by specifying a class explicitly.
-
-Try to avoid creating objects explicitly otherwise you are bound to this decision.
-
-\href{../../../../roam/20220413195148-design_pattern_abstract_factory.org}{Design Pattern - Abstract Factory}, \href{../../../../roam/20220413195351-design_pattern_factory_method.org}{Design Pattern - Factory Method}, \href{../../../../roam/20220413195501-design_pattern_prototype.org}{Design Pattern - Prototype}
-
-\item Dependence on specific operations
-
-Try to avoid to hard code how you want to satisfy a request.
-Example: Do not hard code how a specific button should perform.
-
-\href{../../../../roam/20220413200329-design_pattern_chain_of_responsibility.org}{Design Pattern - Chain of Responsibility}, \href{../../../../roam/20220413200356-design_pattern_command.org}{Design Pattern - Command}
-\item Dependence on hardware and software platform
-
-Try to avoid implementing against a specific HW or API.
-
-Example: Linux \& Windows does not have the same Windows System.
-Provide an abstraction in which the underlying system is not relevant.
-
-\href{../../../../roam/20220413195148-design_pattern_abstract_factory.org}{Design Pattern - Abstract Factory}, \href{../../../../roam/20220413200620-design_pattern_bridge.org}{Design Pattern - Bridge}
-
-\item Dependence on object representations or implementations
-
-You should never bother how the inside of class works while using it.
-Otherwise, you might need to change things when the class is changing its inner live.
-
-\href{../../../../roam/20220413201034-design_pattern_builder.org}{Design Pattern - Builder}, \href{../../../../roam/20220413201100-design_pattern_iterator.org}{Design Pattern - Iterator}, \href{../../../../roam/20220413201128-design_pattern_strategy.org}{Design Pattern - Strategy}, \href{../../../../roam/20220413201147-design_pattern_template_method.org}{Design Pattern - Template Method}, \href{../../../../roam/20220413201212-design_pattern_visitor.org}{Design Pattern - Visitor}
-
-\item Algorithmic dependencies
-
-Do not hard code the algorithm.
-Try to encapsulate the algorithm in a class.
-Then you can replace it every time you want.
-
-\href{../../../../roam/20220413201034-design_pattern_builder.org}{Design Pattern - Builder}, \href{../../../../roam/20220413201100-design_pattern_iterator.org}{Design Pattern - Iterator}, \href{../../../../roam/20220413201128-design_pattern_strategy.org}{Design Pattern - Strategy}, \href{../../../../roam/20220413201147-design_pattern_template_method.org}{Design Pattern - Template Method}, \href{../../../../roam/20220413201212-design_pattern_visitor.org}{Design Pattern - Visitor}
-
-\item Tight coupling
-
-Try to avoid tight coupling.
-Otherwise, it is hard to reuse the class.
-
-\href{../../../../roam/20220413195148-design_pattern_abstract_factory.org}{Design Pattern - Abstract Factory}, \href{../../../../roam/20220413200620-design_pattern_bridge.org}{Design Pattern - Bridge}, \href{../../../../roam/20220413200329-design_pattern_chain_of_responsibility.org}{Design Pattern - Chain of Responsibility}, \href{../../../../roam/20220413200356-design_pattern_command.org}{Design Pattern - Command}, \href{../../../../roam/20220413201512-design_pattern_facade.org}{Design Pattern - Facade}, \href{../../../../roam/20220413201546-design_pattern_mediator.org}{Design Pattern - Mediator}, \href{../../../../roam/20211103140808-observer_pattern.org}{Design Pattern - Observer}
-
-\item Extending functionality by subclassing
-
-This is very difficult to made it right.
-Instead, use object composition to extend functionality.
-
-\href{../../../../roam/20220413200620-design_pattern_bridge.org}{Design Pattern - Bridge}, \href{../../../../roam/20220413200329-design_pattern_chain_of_responsibility.org}{Design Pattern - Chain of Responsibility}, \href{../../../../roam/20220413202016-design_pattern_composite.org}{Design Pattern - Composite}, \href{../../../../roam/20220413202051-design_pattern_decorator.org}{Design Pattern - Decorator}, \href{../../../../roam/20211103140808-observer_pattern.org}{Design Pattern - Observer}, \href{../../../../roam/20220413201128-design_pattern_strategy.org}{Design Pattern - Strategy}
-
-\item Inability to alter classes conveniently
-
-Sometimes you can not modify a class (for example closed source library).
-The following Design Patterns can help to work around this problem.
-
-\href{../../../../roam/20220413202255-design_pattern_adapter.org}{Design Pattern - Adapter}, \href{../../../../roam/20220413202051-design_pattern_decorator.org}{Design Pattern - Decorator}, \href{../../../../roam/20220413201212-design_pattern_visitor.org}{Design Pattern - Visitor}
-\end{enumerate}
-
-
 
 \section{Design Patterns}
-\label{sec:orgbbd5b97}
+\label{sec:org728c4a9}
 \subsection{Creational}
-\label{sec:org7112a81}
+\label{sec:orgd237e5b}
 \subsubsection{Abstract Factory}
-\label{sec:orgf3caf69}
+\label{sec:orgc45a845}
 The Abstract Factory provides an interface for creating families of related or dependent objects without specifying their concrete class.
 It is a good choice, when you want to create big class hierarchy from a factory.
 In general the Simple Factory (\href{../../../../roam/20220510160458-design_pattern_simple_factory.org}{Design Pattern - Simple Factory}) is more common today.
@@ -203,14 +137,14 @@ Motivation:
 
 \begin{enumerate}
 \item Important Notes
-\label{sec:orgc7c3199}
+\label{sec:orgf608600}
 The Factory must be created at the very beginning of the application.
 After creation only this factory must be used to create objects.
 Otherwise, the benefit of the factory are gone.
 \end{enumerate}
 
 \subsubsection{Builder}
-\label{sec:org044b549}
+\label{sec:org1178523}
 The Builder Pattern seperates the construction of a complex class from its representation.
 Therby you can hidde the creation of complex objects behind functions (see listening \ref{lst:the-builder-pattern-in-action}).
 
@@ -252,7 +186,7 @@ Maze* MazeGame::CreateMaze (MazeBuilder& builder) {
 }
 \end{lstlisting}
 \subsubsection{Factory Method}
-\label{sec:org062838a}
+\label{sec:org17ea09f}
 The Factory Method is used to create an object, but the subclass decides which class is instantiated.
 With this pattern you can create concrete creators which can decide which concrete product should be created.
 The user of the creator only has to use the interface.
@@ -265,7 +199,7 @@ The user of the creator only has to use the interface.
 \end{figure}
 
 \subsubsection{Prototype}
-\label{sec:org5a3f4f4}
+\label{sec:orga4ec4c7}
 The prototype pattern is something similar like the factory method (\href{../../../../roam/20220413195351-design_pattern_factory_method.org}{Design Pattern - Factory Method}) is for classes.
 Using the prototype pattern you create copies from concrete objects.
 This is achieved by cloning the prototype.
@@ -273,7 +207,7 @@ This is achieved by cloning the prototype.
 
 \begin{enumerate}
 \item Important Notes
-\label{sec:org9953828}
+\label{sec:orgc256503}
 The crucial part of this pattern is the \texttt{Clone()} function.
 During the implementation you have to decide if you want to do a deep copy or a shallow copy.
 
@@ -315,7 +249,7 @@ Maze MazePrototypeFactory::MakeMaze () {
 \end{enumerate}
 
 \subsubsection{Singleton}
-\label{sec:org74ecd2f}
+\label{sec:orga47f891}
 The Singleton pattern ensures that a class has only one (global) instance.
 Additionally, it provides easy access to this element.
 
@@ -347,9 +281,9 @@ class SingletonFactory {
 \end{figure}
 
 \subsection{Structural Patterns}
-\label{sec:org2916040}
+\label{sec:orgbbabb8d}
 \subsubsection{Adapter}
-\label{sec:org3b730ec}
+\label{sec:org7ce6645}
 The Adapter Design Pattern is used to make a class compatible to others (like a power adapter).
 The adapter pattern has two different types:
 \begin{itemize}
@@ -376,12 +310,12 @@ The class adapter is not often used because many languages do not support multi-
 \caption{\label{fig:object-adapter-class-diagram}Object Adapter Class Diagram}
 \end{figure}
 \subsubsection{Bridge}
-\label{sec:orgb8c48d6}
+\label{sec:org93a7ab0}
 The Bridge Design Pattern is used to decouple an abstraction from its implementation so that the two can vary independently.
 
 \begin{enumerate}
 \item Example
-\label{sec:org03543e8}
+\label{sec:orge64318a}
 Your application should support multiple window systems (X, Windows).
 The client (your application) should be able to create windows, without committing to a concrete implementation.
 Only your window implementation should depend on the target platform (X, Windows).
@@ -400,7 +334,7 @@ Only your window implementation should depend on the target platform (X, Windows
 \end{enumerate}
 
 \subsubsection{Composite}
-\label{sec:org0dbb880}
+\label{sec:orgec9083e}
 The Composite Design Pattern is used to model a part-whole hierarchy.
 The pattern let clients treat individual and compositions of objects uniformly.
 
@@ -420,7 +354,7 @@ The pattern let clients treat individual and compositions of objects uniformly.
 
 \begin{enumerate}
 \item Example
-\label{sec:org7c0e9c3}
+\label{sec:org4dfe066}
 It exists many kinds of graphics and forms (Line, Rectangle, Picture, \ldots{}).
 If the client wants to draw any graphic, it does not care how draw.
 Therefore, we need one function (\texttt{draw}) for all kind of graphics.
@@ -438,7 +372,7 @@ The \texttt{Draw} function iterates over all children and calls their \texttt{Dr
 \end{figure}
 \end{enumerate}
 \subsubsection{Decorator}
-\label{sec:orgf013ada}
+\label{sec:orgb6929a1}
 The Decorater Pattern is used to attach additional responsibility (features) to an object dynamically.
 For example, a class implements only the login mechanism.
 Using the decorater pattern exception handling can be done in a separate class.
@@ -448,5 +382,76 @@ Using the decorater pattern exception handling can be done in a separate class.
 \centering
 \includegraphics[width=.9\linewidth]{img/decorater.png}
 \caption{\label{fig:decrater-diagram}Decrater Diagram}
+\end{figure}
+
+
+\subsubsection{Facade}
+\label{sec:org7d96c0a}
+The Facade Design Pattern is used to provide a simple interface to set of interfaces (subsystem).
+For example the Compiler class provide an easy to use interface for the whole compiler subsystem (figure \ref{fig:facade-example}).
+
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.9\linewidth]{img/use_case_facade.png}
+\caption{\label{fig:facade-use-case}Facade Use Case}
+\end{figure}
+
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.9\linewidth]{img/facade_example.png}
+\caption{\label{fig:facade-example}Facade Example}
+\end{figure}
+\subsubsection{Flyweight}
+\label{sec:org756e250}
+
+The Proxy Design pattern provides a surrogate or placeholder for another object to control access to it.
+
+A Feed Reader must load the news from a (slow) server.
+When a frontend want to display the news before the data are availabel you have to provide a loading screen.
+This can be easely done using the ProxyPattern.
+
+The Proxy accepts the request, checks if the data are avaiable.
+If not, it provides the login screen.
+If the news are loaded, it returns the news.
+
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.9\linewidth]{img/proxy.png}
+\caption{\label{fig:proxy-class-diagram}Proxy Class Diagram}
+\end{figure}
+
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.9\linewidth]{img/proxy_object_diagram.png}
+\caption{\label{fig:object-diagram-for-proxy}Object Diagram for proxy}
+\end{figure}
+\subsubsection{Proxy}
+\label{sec:org3c4a4d4}
+The Proxy Design pattern provides a surrogate or placeholder for another object to control access to it.
+
+A Feed Reader must load the news from a (slow) server.
+When a frontend want to display the news before the data are availabel you have to provide a loading screen.
+This can be easely done using the ProxyPattern.
+
+The Proxy accepts the request, checks if the data are avaiable.
+If not, it provides the login screen.
+If the news are loaded, it returns the news.
+
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.9\linewidth]{img/proxy.png}
+\caption{\label{fig:proxy-class-diagram}Proxy Class Diagram}
+\end{figure}
+
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.9\linewidth]{img/proxy_object_diagram.png}
+\caption{\label{fig:object-diagram-for-proxy}Object Diagram for proxy}
 \end{figure}
 \end{document}

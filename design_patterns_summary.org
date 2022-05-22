@@ -88,69 +88,6 @@ The Object Design Patterns with the object relationships which can be changed at
 #+NAME: fig:design-pattern-space
 [[file:img/design_pattern_space.png]]
 
-** The Most common causes of redesign
-
-
-A list of the most common causes of redesign and how you could solve the problem.
-
-1. Creating an object by specifying a class explicitly.
-
-   Try to avoid creating objects explicitly otherwise you are bound to this decision.
-
-   [[id:b73e8fc7-bbc3-4f57-8df2-5abbc96c61f6][Design Pattern - Abstract Factory]], [[id:2d54848d-995e-423c-b60b-4867b0731b68][Design Pattern - Factory Method]], [[id:f579d2af-4b38-4f6c-bd6c-538083943699][Design Pattern - Prototype]]
-
-2. Dependence on specific operations
-
-   Try to avoid to hard code how you want to satisfy a request.
-   Example: Do not hard code how a specific button should perform.
-
-   [[id:b24627bc-2f7c-481a-8d9e-66f35c72ed74][Design Pattern - Chain of Responsibility]], [[id:455b2078-668d-48eb-99ae-0e91afcffedf][Design Pattern - Command]]
-3. Dependence on hardware and software platform
-
-   Try to avoid implementing against a specific HW or API.
-
-   Example: Linux & Windows does not have the same Windows System.
-   Provide an abstraction in which the underlying system is not relevant.
-
-   [[id:b73e8fc7-bbc3-4f57-8df2-5abbc96c61f6][Design Pattern - Abstract Factory]], [[id:12f6d05d-2a89-42bb-b589-7639c33f5c95][Design Pattern - Bridge]]
-   
-4. Dependence on object representations or implementations
-
-   You should never bother how the inside of class works while using it.
-   Otherwise, you might need to change things when the class is changing its inner live.
-
-   [[id:71208b8f-3c01-497a-80c5-321167935dd8][Design Pattern - Builder]], [[id:4ce9446c-0cb7-4ed8-9a25-4cf9f18e0838][Design Pattern - Iterator]], [[id:72b4653d-3df2-48e0-a713-8310862decb0][Design Pattern - Strategy]], [[id:ec0aebd2-e687-4bb1-bc3c-d2b60b7692fd][Design Pattern - Template Method]], [[id:8f6c0029-51f4-4cb8-bc84-8a3c70632dfc][Design Pattern - Visitor]]
-
-5. Algorithmic dependencies
-
-   Do not hard code the algorithm.
-   Try to encapsulate the algorithm in a class.
-   Then you can replace it every time you want.
-
-   [[id:71208b8f-3c01-497a-80c5-321167935dd8][Design Pattern - Builder]], [[id:4ce9446c-0cb7-4ed8-9a25-4cf9f18e0838][Design Pattern - Iterator]], [[id:72b4653d-3df2-48e0-a713-8310862decb0][Design Pattern - Strategy]], [[id:ec0aebd2-e687-4bb1-bc3c-d2b60b7692fd][Design Pattern - Template Method]], [[id:8f6c0029-51f4-4cb8-bc84-8a3c70632dfc][Design Pattern - Visitor]]
-
-6. Tight coupling
-
-   Try to avoid tight coupling.
-   Otherwise, it is hard to reuse the class.
-
-   [[id:b73e8fc7-bbc3-4f57-8df2-5abbc96c61f6][Design Pattern - Abstract Factory]], [[id:12f6d05d-2a89-42bb-b589-7639c33f5c95][Design Pattern - Bridge]], [[id:b24627bc-2f7c-481a-8d9e-66f35c72ed74][Design Pattern - Chain of Responsibility]], [[id:455b2078-668d-48eb-99ae-0e91afcffedf][Design Pattern - Command]], [[id:dfdb063d-ce56-47af-bf6a-89c7a5484464][Design Pattern - Facade]], [[id:25a72cbf-242c-48ea-b7b1-5847378c9299][Design Pattern - Mediator]], [[id:3a5552f7-02fd-4266-936e-a3a8f5300f87][Design Pattern - Observer]]
-   
-7. Extending functionality by subclassing
-
-   This is very difficult to made it right.
-   Instead, use object composition to extend functionality.
-
-   [[id:12f6d05d-2a89-42bb-b589-7639c33f5c95][Design Pattern - Bridge]], [[id:b24627bc-2f7c-481a-8d9e-66f35c72ed74][Design Pattern - Chain of Responsibility]], [[id:24ad2305-b361-4021-92f3-7bfa2d87fc1e][Design Pattern - Composite]], [[id:915833c3-ba6d-4d12-9414-926aeb56b5d5][Design Pattern - Decorator]], [[id:3a5552f7-02fd-4266-936e-a3a8f5300f87][Design Pattern - Observer]], [[id:72b4653d-3df2-48e0-a713-8310862decb0][Design Pattern - Strategy]]
-
-8. Inability to alter classes conveniently
-
-   Sometimes you can not modify a class (for example closed source library).
-   The following Design Patterns can help to work around this problem.
-
-   [[id:919a9260-46ac-4c32-9c3c-5b164d36070c][Design Pattern - Adapter]], [[id:915833c3-ba6d-4d12-9414-926aeb56b5d5][Design Pattern - Decorator]], [[id:8f6c0029-51f4-4cb8-bc84-8a3c70632dfc][Design Pattern - Visitor]]
-
-
 
 * Design Patterns
 ** Creational
@@ -399,3 +336,58 @@ Using the decorater pattern exception handling can be done in a separate class.
 #+NAME: fig:decrater-diagram
 [[file:img/decorater.png]]
 
+
+*** Facade
+The Facade Design Pattern is used to provide a simple interface to set of interfaces (subsystem).
+For example the Compiler class provide an easy to use interface for the whole compiler subsystem (figure ref:fig:facade-example).
+
+
+#+CAPTION: Facade Use Case
+#+NAME: fig:facade-use-case
+[[file:img/use_case_facade.png]]
+
+
+#+CAPTION: Facade Example 
+#+NAME: fig:facade-example 
+[[file:img/facade_example.png]]
+*** Flyweight
+
+The Proxy Design pattern provides a surrogate or placeholder for another object to control access to it.
+
+A Feed Reader must load the news from a (slow) server.
+When a frontend want to display the news before the data are availabel you have to provide a loading screen.
+This can be easely done using the ProxyPattern.
+
+The Proxy accepts the request, checks if the data are avaiable.
+If not, it provides the login screen.
+If the news are loaded, it returns the news.
+
+
+#+CAPTION: Proxy Class Diagram
+#+NAME: fig:proxy-class-diagram
+[[file:img/proxy.png]]
+
+
+#+CAPTION: Object Diagram for proxy
+#+NAME: fig:object-diagram-for-proxy
+[[file:img/proxy_object_diagram.png]]
+*** Proxy
+The Proxy Design pattern provides a surrogate or placeholder for another object to control access to it.
+
+A Feed Reader must load the news from a (slow) server.
+When a frontend want to display the news before the data are availabel you have to provide a loading screen.
+This can be easely done using the ProxyPattern.
+
+The Proxy accepts the request, checks if the data are avaiable.
+If not, it provides the login screen.
+If the news are loaded, it returns the news.
+
+
+#+CAPTION: Proxy Class Diagram
+#+NAME: fig:proxy-class-diagram
+[[file:img/proxy.png]]
+
+
+#+CAPTION: Object Diagram for proxy
+#+NAME: fig:object-diagram-for-proxy
+[[file:img/proxy_object_diagram.png]]
