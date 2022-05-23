@@ -260,18 +260,14 @@ The class adapter is not often used because many languages do not support multi-
 *** Bridge
 The Bridge Design Pattern is used to decouple an abstraction from its implementation so that the two can vary independently.
 
+#+CAPTION: Bridge Class Diagram
+#+NAME: fig:bridge-class-diagram
+[[file:img/bridge.png]]
+
 **** Example
 Your application should support multiple window systems (X, Windows).
 The client (your application) should be able to create windows, without committing to a concrete implementation.
 Only your window implementation should depend on the target platform (X, Windows).
-
-#+CAPTION: Bridge Design Pattern Example
-#+NAME: fig:bridge-design-pattern-example
-[[file:img/bridge_example.png]]
-
-#+CAPTION: Bridge Class Diagram
-#+NAME: fig:bridge-class-diagram
-[[file:img/bridge.png]]
 
 *** Composite
 The Composite Design Pattern is used to model a part-whole hierarchy.
@@ -336,7 +332,6 @@ Using the decorater pattern exception handling can be done in a separate class.
 #+NAME: fig:decrater-diagram
 [[file:img/decorater.png]]
 
-
 *** Facade
 The Facade Design Pattern is used to provide a simple interface to set of interfaces (subsystem).
 For example the Compiler class provide an easy to use interface for the whole compiler subsystem (figure ref:fig:facade-example).
@@ -368,6 +363,8 @@ Instead, creating every time a new object with the character "a" you always refe
 
 #+CAPTION: Flyweight Class Diagram
 #+NAME: fig:flyweight-class-diagram
+[[file:img/flyweight.png]]
+
 *** Proxy
 The Proxy Design pattern provides a surrogate or placeholder for another object to control access to it.
 
@@ -419,3 +416,42 @@ As soon as the user clicks on the button, the button executions the =command.Exe
 #+CAPTION: Example of Command Pattern
 #+NAME: fig:example-of-command-pattern
 [[file:img/example_of_command.png]]
+
+*** Interpreter
+The Interpreter Design Pattern is used to interpret a simple grammar / language.
+Every grammar rule is modeled as one subclass.
+
+
+#+CAPTION: Interpreter Class Diagram
+#+NAME: fig:interpreter-class-diagram
+[[file:img/interpreter.png]]
+
+
+**** Example
+#+CAPTION: Interpreter Class Diagram for RegEx
+#+NAME: fig:interpreter-class-diagram-for-regex
+[[file:img/interpreter_regex.png]]
+
+#+CAPTION: AST for RegEx "raining & (dogs | cats) *"
+#+NAME: fig:ast-for-regex
+[[file:img/interpreter_regex_ast.png]]
+
+
+**** My thoughts
+Before you implement your own interpreter consider a specialized library for this.
+*** Iterator
+The iterator design pattern is used to access the items in a [[id:9cf8949b-7cd7-4ba9-a379-bfaaf915475f][Data structure]] (Aggregate in figure ref:fig:iterator-class-diagram).
+The benefit of iterator is that it hides the implementation details of the data structure.
+
+#+begin_src rust
+  let my_vec = vec![1, 10];
+  let iter = my_vec.iter();
+  let _ = iter.next();
+  let _ = iter.next();
+  // ...
+#+end_src
+
+
+#+CAPTION: Iterator Class Diagram
+#+NAME: fig:iterator-class-diagram
+[[file:img/iterator.png]]
