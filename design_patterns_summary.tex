@@ -1,4 +1,4 @@
-% Created 2022-05-23 Mon 08:08
+% Created 2022-05-30 Mon 15:10
 % Intended LaTeX compiler: xelatex
 \documentclass[11pt]{article}
 \usepackage{graphicx}
@@ -28,6 +28,7 @@
 \usepackage{enumitem}
 \usepackage{algorithm}
 \usepackage{algpseudocode}
+\usepackage{subcaption}
 \setlist{noitemsep}
 \setlength{\columnseprule}{0.2pt}
 \definecolor{mygreen}{rgb}{0,0.6,0}
@@ -42,7 +43,7 @@
  pdftitle={Design Patterns - Summary},
  pdfkeywords={},
  pdfsubject={},
- pdfcreator={Emacs 27.2 (Org mode 9.5.2)}, 
+ pdfcreator={Emacs 27.2 (Org mode 9.5.3)}, 
  pdflang={English}}
 \begin{document}
 
@@ -78,45 +79,26 @@
 
 
 \section{Introduction}
-\label{sec:org0043b0f}
-\subsection{Most important quotes}
-\label{sec:orge572861}
-In the introduction the basics of object-oriented programming are explained.
-Therefore, for many this is easy to read.
-However, some important statements are made.
-
-\begin{quote}
-Favor object composition over class inheritance
-\end{quote}
-
-Because it is very difficult to make the correct abstraction often the base class(es) are not complete or have too much in it.
-With object composition you don't have this problem.
-
-\begin{quote}
-Program to an interface, not an implementation
-\end{quote}
-If you implement against interfaces you can test your class with unit tests.
-If you implement against a fixed implementation you can not change this behavior at anytime.
-
+\label{sec:org805d480}
 \subsection{The design patterns}
-\label{sec:orge2aab83}
+\label{sec:org979e7a7}
 
 Class Design Patterns deal with the relationships between classes and their subclasses.
 The Object Design Patterns with the object relationships which can be changed at runtime.
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=.9\linewidth]{img/design_pattern_space.png}
+\includegraphics[width=0.6\textwidth]{img/design_pattern_space.png}
 \caption{\label{fig:design-pattern-space}Design pattern space}
 \end{figure}
 
 
 \section{Design Patterns}
-\label{sec:orgb1fde5f}
+\label{sec:org99c44fc}
 \subsection{Creational Patterns}
-\label{sec:org5f4b61d}
+\label{sec:org33362f0}
 \subsubsection{Abstract Factory}
-\label{sec:orgf8ec2d3}
+\label{sec:org47d9b7e}
 The Abstract Factory provides an interface for creating families of related or dependent objects without specifying their concrete class.
 It is a good choice, when you want to create big class hierarchy from a factory.
 In general the Simple Factory is more common today.
@@ -131,62 +113,28 @@ Motivation:
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=.9\linewidth]{img/abstract_factory.png}
+\includegraphics[width=0.6\textwidth]{img/abstract_factory.png}
 \caption{\label{fig:abstract-factory-uml}Abstract Factory Class Diagram}
 \end{figure}
 
-\begin{enumerate}
-\item Important Notes
-\label{sec:orgcf1e61e}
+\textbf{Important Notes:}
 The Factory must be created at the very beginning of the application.
 After creation only this factory must be used to create objects.
 Otherwise, the benefit of the factory are gone.
-\end{enumerate}
 
 \subsubsection{Builder}
-\label{sec:orgbbc2b8f}
-The Builder Pattern seperates the construction of a complex class from its representation.
-Therby you can hidde the creation of complex objects behind functions (see listening \ref{lst:the-builder-pattern-in-action}).
+\label{sec:org6e2cd5d}
+The Builder Pattern separates the construction of a complex class from its representation.
+Thereby you can hide the creation of complex objects behind functions.
 
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=.9\linewidth]{img/builder.png}
+\includegraphics[width=0.6\textwidth]{img/builder.png}
 \caption{\label{fig:builder-class-diagram}Builder Class Diagram}
 \end{figure}
-
-
-\lstset{language=c++,label=lst:the-builder-pattern-in-action,caption={The Builder Pattern in Action},captionpos=b,numbers=none}
-\begin{lstlisting}
-Maze* MazeGame::CreateMaze () {
-  Maze* aMaze = new Maze;
-  Room* r1 = new Room(1);
-  Room* r2 = new Room(2);
-  Door* theDoor = new Door(r1, r2);
-  aMaze->AddRoom(r1);
-  aMaze->AddRoom(r2);
-  r1->SetSide(North, new Wall);
-  r1->SetSide(East, theDoor);
-  r1->SetSide(South, new Wall);
-  r1->SetSide(West, new Wall);
-  r2->SetSide(North, new Wall);
-  r2->SetSide(East, new Wall);
-  r2->SetSide(South, new Wall);
-  r2->SetSide(West, theDoor);
-  return aMaze;
-}
-
-// With Builder Pattern
-Maze* MazeGame::CreateMaze (MazeBuilder& builder) {
-  builder.BuildMaze();
-  builder.BuildRoom(1);
-  builder.BuildRoom(2);
-  builder.BuildDoor(1, 2);
-  return builder.GetMaze();
-}
-\end{lstlisting}
 \subsubsection{Factory Method}
-\label{sec:org41deb84}
+\label{sec:org49ed514}
 The Factory Method is used to create an object, but the subclass decides which class is instantiated.
 With this pattern you can create concrete creators which can decide which concrete product should be created.
 The user of the creator only has to use the interface.
@@ -194,62 +142,30 @@ The user of the creator only has to use the interface.
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=.9\linewidth]{img/factory_method.png}
+\includegraphics[width=0.6\textwidth]{img/factory_method.png}
 \caption{\label{fig:factory-method-class-diagram}Factory Method Class Diagram}
 \end{figure}
 
 \subsubsection{Prototype}
-\label{sec:orgda61ea8}
-The prototype pattern is something similar like the factory method is for classes.
+\label{sec:org50a477f}
+The prototype pattern is something similar for objects like the factory method is for classes.
 Using the prototype pattern you create copies from concrete objects.
 This is achieved by cloning the prototype.
 
 
-\begin{enumerate}
-\item Important Notes
-\label{sec:orgf4019f3}
+\textbf{Important Notes:}
 The crucial part of this pattern is the \texttt{Clone()} function.
 During the implementation you have to decide if you want to do a deep copy or a shallow copy.
 
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=.9\linewidth]{img/prototype.png}
+\includegraphics[width=0.6\textwidth]{img/prototype.png}
 \caption{\label{fig:prototype-class-diagram}Prototype Class Diagram}
 \end{figure}
 
-
-\lstset{language=c++,label=fig:prototype-design-patter-in-action,caption={Prototype Design Patter in Action},captionpos=b,numbers=none}
-\begin{lstlisting}
-class MazePrototypeFactory : public MazeFactory {
-public:
-  MazePrototypeFactory(Maze*, Wall*, Room*, Door*);
-  virtual Maze* MakeMaze() const;
-  virtual Room* MakeRoom(int) const;
-  virtual Wall* MakeWall() const;
-  virtual Door* MakeDoor(Room*, Room*) const;
-private:
-  vMaze* _prototypeMaze;
-  Room* _prototypeRoom;
-  Wall* _prototypeWall;
-  Door* _prototypeDoor;
-};
-
-MazePrototypeFactory::MazePrototypeFactory (Maze* m, Wall* w, Room* r, Door* d) {
-  _prototypeMaze = m;
-  _prototypeWall = w;
-  _prototypeRoom = r;
-  _prototypeDoor = d;
-}
-
-Maze MazePrototypeFactory::MakeMaze () {
-  return this->_prototypeMaze;
-}
-\end{lstlisting}
-\end{enumerate}
-
 \subsubsection{Singleton}
-\label{sec:orgaeb362e}
+\label{sec:orgb27306f}
 The Singleton pattern ensures that a class has only one (global) instance.
 Additionally, it provides easy access to this element.
 
@@ -260,12 +176,12 @@ Therefore, not testable and difficult to maintain.
 If you want something like singleton, you should use a simple factory which always returns the same instance.
 
 
-\lstset{language=csharp,label=lst:singelton-alternative-in-code,caption={Singelton alternative in code},captionpos=b,numbers=none}
+\lstset{language=java,label=lst:singelton-alternative-in-code,caption={Singelton alternative in code},captionpos=b,numbers=none}
 \begin{lstlisting}
 class SingletonFactory {
     private static object myInstance;
 
-    createObject() {
+    public object createObject() {
 	if (SingletonFactory.myInstance == null) {
 	    SingletonFactory.myInstance = new();
 	}
@@ -274,16 +190,10 @@ class SingletonFactory {
 }
 \end{lstlisting}
 
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=.9\linewidth]{img/singleton.png}
-\caption{\label{fig:singelton-class-diagram}Singelton Class Diagram}
-\end{figure}
-
 \subsection{Structural Patterns}
-\label{sec:orgd0f184a}
+\label{sec:orgac05dcf}
 \subsubsection{Adapter}
-\label{sec:orgc2244a8}
+\label{sec:orga2807cb}
 The Adapter Design Pattern is used to make a class compatible to others (like a power adapter).
 The adapter pattern has two different types:
 \begin{itemize}
@@ -298,58 +208,71 @@ The object adapter inherits only from the target and holds the adaptee as an ins
 
 The class adapter is not often used because many languages do not support multi-inheritance, and you should favor object composition over class inheritance.
 
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=.9\linewidth]{img/class_adapter.png}
-\caption{\label{fig:class-adapter-class-diagram}Class Adapter Class Diagram}
+\begin{figure}[h]
+  \centering
+  \begin{subfigure}{0.4\textwidth}
+    \centering
+    \includegraphics[width=3in]{img/object_adapter.png}
+    \caption{Object Adapter Class Diagram \label{fig:object-adapter-class-diagram}}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}{0.4\textwidth}
+    \centering
+    \includegraphics[width=3in]{img/class_adapter.png}
+    \caption{Class Adapter Class Diagram \label{fig:class-adapter-class-diagram}}
+  \end{subfigure}
+  \caption{
+    \label{fig:adapter-class-diagrams}
+    Adapter Class Diagrams
+  }
 \end{figure}
 
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=.9\linewidth]{img/object_adapter.png}
-\caption{\label{fig:object-adapter-class-diagram}Object Adapter Class Diagram}
-\end{figure}
 \subsubsection{Bridge}
-\label{sec:org4ac4b61}
+\label{sec:orgedca87c}
 The Bridge Design Pattern is used to decouple an abstraction from its implementation so that the two can vary independently.
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=.9\linewidth]{img/bridge.png}
+\includegraphics[width=0.6\textwidth]{img/bridge.png}
 \caption{\label{fig:bridge-class-diagram}Bridge Class Diagram}
 \end{figure}
 
-\begin{enumerate}
-\item Example
-\label{sec:org287d570}
+\textbf{Example:}
 Your application should support multiple window systems (X, Windows).
 The client (your application) should be able to create windows, without committing to a concrete implementation.
 Only your window implementation should depend on the target platform (X, Windows).
-\end{enumerate}
-
 
 \subsubsection{Composite}
-\label{sec:orgd712b72}
+\label{sec:org6345c02}
 The Composite Design Pattern is used to model a part-whole hierarchy.
 The pattern let clients treat individual and compositions of objects uniformly.
 
-\begin{figure}[htbp]
-\centering
+\begin{center}
 \includegraphics[width=.9\linewidth]{img/compsite_graph.png}
-\caption{\label{fig:a-composite-structure}A Composite Structure}
+\end{center}
+
+
+\begin{figure}[h]
+  \centering
+  \begin{subfigure}{0.4\textwidth}
+    \centering
+    \includegraphics[width=3in]{img/composite.png}
+    \caption{Composite Class Diagram \label{fig:composite-class-diagram}}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}{0.4\textwidth}
+    \centering
+    \includegraphics[width=3in]{img/example_of_composite.png}
+    \caption{Example of Composite \label{fig:example-of-composite}}
+  \end{subfigure}
+  \caption{
+    \label{fig:composite-diagrams}
+    Composite Diagrams
+  }
 \end{figure}
 
 
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=.9\linewidth]{img/composite.png}
-\caption{\label{fig:composite-diagram}Composite Diagram}
-\end{figure}
-
-
-\begin{enumerate}
-\item Example
-\label{sec:org34299b6}
+\textbf{Example:}
 It exists many kinds of graphics and forms (Line, Rectangle, Picture, \ldots{}).
 If the client wants to draw any graphic, it does not care how draw.
 Therefore, we need one function (\texttt{draw}) for all kind of graphics.
@@ -358,16 +281,8 @@ This picture class has some more functions (\texttt{Add}, \texttt{Remove}, \text
 The \texttt{Draw} function iterates over all children and calls their \texttt{Draw} function.
 
 
-
-
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=.9\linewidth]{img/example_of_composite.png}
-\caption{\label{fig:example-of-composite}Example of Composite}
-\end{figure}
-\end{enumerate}
 \subsubsection{Decorator}
-\label{sec:org3400073}
+\label{sec:org013bb01}
 The Decorater Pattern is used to attach additional responsibility (features) to an object dynamically.
 For example, a class implements only the login mechanism.
 Using the decorater pattern exception handling can be done in a separate class.
@@ -375,172 +290,226 @@ Using the decorater pattern exception handling can be done in a separate class.
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=.9\linewidth]{img/decorater.png}
-\caption{\label{fig:decrater-diagram}Decrater Diagram}
+\includegraphics[width=0.6\textwidth]{img/decorater.png}
+\caption{\label{fig:decrater-diagram}Decorater Diagram}
 \end{figure}
 
 \subsubsection{Facade}
-\label{sec:org58a31c1}
-The Facade Design Pattern is used to provide a simple interface to set of interfaces (subsystem).
-For example the Compiler class provide an easy to use interface for the whole compiler subsystem (figure \ref{fig:facade-example}).
+\label{sec:orgfc5c1fb}
+The Facade Design Pattern is used to provide a simple interface to a set of interfaces (subsystem).
+For example the Compiler class provide an easy-to-use interface for the whole compiler subsystem (figure \ref{fig:facade-example}).
 
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=.9\linewidth]{img/use_case_facade.png}
+\includegraphics[width=0.6\textwidth]{img/use_case_facade.png}
 \caption{\label{fig:facade-use-case}Facade Use Case}
 \end{figure}
 
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=.9\linewidth]{img/facade_example.png}
+\includegraphics[width=0.6\textwidth]{img/facade_example.png}
 \caption{\label{fig:facade-example}Facade Example}
 \end{figure}
 \subsubsection{Flyweight}
-\label{sec:org4a45ffd}
+\label{sec:org043bca9}
 The Flyweight pattern is used to support large number of objects efficiently.
 For example, you can store every character in its own object.
 In a document with 1000 characters you need more than 1000 objects.
 The Flyweight pattern helps here.
 
-In the Flyweight class is only state indecent stuff stored.
+In the Flyweight class is only state independent stuff stored.
 Therefore, the Flyweight is shareable.
 Instead, creating every time a new object with the character "a" you always reference to the same object.
 
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=.9\linewidth]{img/flyweight_example.png}
+\includegraphics[width=0.6\textwidth]{img/flyweight_example.png}
 \caption{\label{fig:flyweight-example}Flyweight Example}
 \end{figure}
 
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=.9\linewidth]{img/flyweight.png}
+\includegraphics[width=0.6\textwidth]{img/flyweight.png}
 \caption{\label{fig:flyweight-class-diagram}Flyweight Class Diagram}
 \end{figure}
 
 \subsubsection{Proxy}
-\label{sec:orgda5e1c9}
+\label{sec:org8cfe2bc}
 The Proxy Design pattern provides a surrogate or placeholder for another object to control access to it.
 
 A Feed Reader must load the news from a (slow) server.
-When a frontend want to display the news before the data are availabel you have to provide a loading screen.
-This can be easely done using the ProxyPattern.
+When a frontend want to display the news before the data are available you have to provide a loading screen.
+This can be easily done using the Proxy pattern.
 
-The Proxy accepts the request, checks if the data are avaiable.
+The Proxy accepts the request, checks if the data are available.
 If not, it provides the login screen.
 If the news are loaded, it returns the news.
 
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=.9\linewidth]{img/proxy.png}
+\includegraphics[width=0.6\textwidth]{img/proxy.png}
 \caption{\label{fig:proxy-class-diagram}Proxy Class Diagram}
 \end{figure}
 
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=.9\linewidth]{img/proxy_object_diagram.png}
+\includegraphics[width=0.6\textwidth]{img/proxy_object_diagram.png}
 \caption{\label{fig:object-diagram-for-proxy}Object Diagram for proxy}
 \end{figure}
 
-\subsection{Behaviourla Patterns}
-\label{sec:orgd335dfb}
+\subsection{Behavioral Patterns}
+\label{sec:org5030844}
 \subsubsection{Chain of Responsibility}
-\label{sec:orgca409d4}
+\label{sec:orgc5371c8}
 The Chain of Responsibility is used to decouple the sender of a request to its receiver by giving more than one class the change to handle the request.
 The first object takes the request, check if it can handle.
 When yes, then handle it.
 If not, forward the request to the parent / successor.
 
 
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=.9\linewidth]{img/chain_of_responsibility_sequence.png}
-\caption{\label{fig:the-sequence-of-a-chain-of-responsibility}The Sequence of a Chain of Responsibility}
+\begin{figure}[h]
+  \centering
+  \begin{subfigure}{0.4\textwidth}
+    \centering
+    \includegraphics[width=3in]{img/chain_of_responsibility_sequence.png}
+    \caption{CoR Sequence \label{fig:cor-sequence}}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}{0.4\textwidth}
+    \centering
+    \includegraphics[width=3in]{img/chain_of_responsibility.png}
+    \caption{CoR Class Diagram \label{fig:cor-class-diagram}}
+  \end{subfigure}
+  \caption{
+    \label{fig:chain-of-responsibility-diagrams}
+    Chain of Responsibilty Diagrams
+  }
 \end{figure}
 
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=.9\linewidth]{img/chain_of_responsibility.png}
-\caption{\label{fig:chain-of-responsibility-class-diagram}Chain of Responsibility Class Diagram}
-\end{figure}
 
 \subsubsection{Command}
-\label{sec:orgd5c8a07}
+\label{sec:orgb9e8aa3}
 The command pattern is used to encapsulate actions / request inside an object.
 For example, the design of a framework does not know which action the button should perform.
 Therefore, the button is created using a command as parameter.
 As soon as the user clicks on the button, the button executions the \texttt{command.Execute()} function.
 
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=.9\linewidth]{img/command.png}
-\caption{\label{fig:command-class-diagram}Command Class Diagram}
-\end{figure}
-
-
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=.9\linewidth]{img/example_of_command.png}
-\caption{\label{fig:example-of-command-pattern}Example of Command Pattern}
+\begin{figure}[h]
+  \centering
+  \begin{subfigure}{0.4\textwidth}
+    \centering
+    \includegraphics[width=3in]{img/command.png}
+    \caption{Command Class Diagram \label{fig:command-class-diagram}}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}{0.4\textwidth}
+    \centering
+    \includegraphics[width=3in]{img/example_of_command.png}
+    \caption{Example of Command \label{fig:example-of-command}}
+  \end{subfigure}
+  \caption{
+    \label{fig:command-class-diagrams}
+    Command Class Diagrams
+  }
 \end{figure}
 
 \subsubsection{Interpreter}
-\label{sec:org358b7cd}
+\label{sec:org0c124e0}
 The Interpreter Design Pattern is used to interpret a simple grammar / language.
 Every grammar rule is modeled as one subclass.
 
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=.9\linewidth]{img/interpreter.png}
+\includegraphics[width=0.6\textwidth]{img/interpreter.png}
 \caption{\label{fig:interpreter-class-diagram}Interpreter Class Diagram}
 \end{figure}
 
 
-\begin{enumerate}
-\item Example
-\label{sec:org5e2a7c0}
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=.9\linewidth]{img/interpreter_regex.png}
-\caption{\label{fig:interpreter-class-diagram-for-regex}Interpreter Class Diagram for RegEx}
-\end{figure}
-
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=.9\linewidth]{img/interpreter_regex_ast.png}
-\caption{\label{fig:ast-for-regex}AST for RegEx "raining \& (dogs | cats) *"}
-\end{figure}
-
-
-\item My thoughts
-\label{sec:org80e9a19}
+\textbf{My thoughts:}
 Before you implement your own interpreter consider a specialized library for this.
-\end{enumerate}
 \subsubsection{Iterator}
-\label{sec:org134f79a}
+\label{sec:org508f1e7}
 The iterator design pattern is used to access the items in a \href{../../../../roam/20210518131131-datastructure.org}{Data structure} (Aggregate in figure \ref{fig:iterator-class-diagram}).
 The benefit of iterator is that it hides the implementation details of the data structure.
 
-\lstset{language=rust,label= ,caption= ,captionpos=b,numbers=none}
-\begin{lstlisting}
-let my_vec = vec![1, 10];
-let iter = my_vec.iter();
-let _ = iter.next();
-let _ = iter.next();
-// ...
-\end{lstlisting}
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.6\textwidth]{img/iterator.png}
+\caption{\label{fig:iterator-class-diagram}Iterator Class Diagram}
+\end{figure}
+
+\subsubsection{Mediator}
+\label{sec:orgac82ab7}
+The Mediator Design Pattern is used to encapsulate how a set of objects interact with each other.
+The different objects do not have to reference each other explicit.
+
+
+\begin{figure}[h]
+  \centering
+  \begin{subfigure}{0.4\textwidth}
+    \centering
+    \includegraphics[width=3in]{img/mediator.png}
+    \caption{Mediator Class Diagram \label{fig:mediator-class-diagram}}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}{0.4\textwidth}
+    \centering
+    \includegraphics[width=3in]{img/mediator_sequence_diagram.png}
+    \caption{Mediator Sequence Diagram \label{fig:mediator-sequence-diagram}}
+  \end{subfigure}
+  \caption{
+    \label{fig:mp-communication-modes}
+    Mediator Diagrams
+  }
+\end{figure}
+
+\textbf{How does it work:}
+The mediator holds a reference to every object.
+The user selected some item from the list box (object A).
+Object A notifies the mediator that the value has changed.
+The mediator know notifies the other objects.
+
+\subsubsection{Memento}
+\label{sec:orgaff9a2a}
+The Memento Design Pattern is used to store an internal state.
+This is often used for restoring the internal state of an object.
+
+The object creates a memento (a copy of the state itself) and returns it to the world.
+The state of the object can be restored using such a memento.
+You can not change the memento and the inner live is unknown to the outer world.
 
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=.9\linewidth]{img/iterator.png}
-\caption{\label{fig:iterator-class-diagram}Iterator Class Diagram}
+\includegraphics[width=0.6\textwidth]{img/memento.png}
+\caption{\label{fig:memento-class-diagram}Memento Class Diagram}
+\end{figure}
+
+\subsubsection{Observer}
+\label{sec:orgeafeaef}
+
+The goal of the Observer Pattern is to resolve a cyclic dependency.
+The Pattern consists of two objects:
+\begin{itemize}
+\item Subject: is monitored (e.g. a model)
+\item Observer: monitors the subject (e.g. a view)
+\end{itemize}
+
+
+The observer register itself on the subject.
+The only requirement is that the subject implements a specific interface.
+Using this approach the domain does not have to need anything from the view (excepted the interface).
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.6\textwidth]{img/java_observer_pattern.png}
+\caption{\label{fig:observer-class-diagram}Observer Class Diagram}
 \end{figure}
 \end{document}
