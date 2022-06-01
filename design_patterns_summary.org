@@ -371,7 +371,6 @@ If not, forward the request to the parent / successor.
   \end{figure}
 #+end_src
 
-
 *** Command
 The command pattern is used to encapsulate actions / request inside an object.
 For example, the design of a framework does not know which action the button should perform.
@@ -483,3 +482,39 @@ Using this approach the domain does not have to need anything from the view (exc
 #+NAME: fig:observer-class-diagram
 #+ATTR_LATEX: :width 0.6\textwidth
 [[file:img/java_observer_pattern.png]]
+
+*** State
+
+The state pattern is used allow an object to alter its internal behavior depending on its state.
+The object will appear to change its class.
+ 
+#+begin_src latex
+  \begin{figure}[h]
+    \centering
+    \begin{subfigure}{0.4\textwidth}
+      \centering
+      \includegraphics[width=3in]{img/state.png}
+      \caption{State Class Diagram \label{fig:state-class-diagram}}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.4\textwidth}
+      \centering
+      \includegraphics[width=3in]{img/state_example.png}
+      \caption{TCP Connection with State \label{fig:tcp-connection-with-state}}
+    \end{subfigure}
+    \caption{
+      \label{fig:state-class-diagrams}
+      State Class Diagrams
+    }
+  \end{figure}
+#+end_src
+
+*** Strategy
+
+The Strategy Pattern is used to encapsulate an algorithm in an object.
+With this approach you can change the algorithm at runtime.
+
+#+CAPTION: Strategy Class Diagram
+#+NAME: fig:strategy-class-diagram
+#+ATTR_LATEX: :width 0.6\textwidth
+[[file:img/strategy.png]]
