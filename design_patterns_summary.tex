@@ -1,4 +1,4 @@
-% Created 2022-06-01 Wed 11:29
+% Created 2022-06-05 Sun 09:45
 % Intended LaTeX compiler: xelatex
 \documentclass[11pt]{article}
 \usepackage{graphicx}
@@ -11,9 +11,9 @@
 \usepackage{capt-of}
 \usepackage{hyperref}
 \usepackage{subcaption}
+\usepackage[newfloat]{minted}
 \usepackage{color}
 \usepackage{listings}
-\usepackage[newfloat]{minted}
 \usepackage[utf8]{inputenc}
 \usepackage[table,xcdraw]{xcolor}
 \usepackage{paralist}
@@ -80,9 +80,9 @@
 
 
 \section{Introduction}
-\label{sec:org35b45ae}
+\label{sec:org36b35d7}
 \subsection{The design patterns}
-\label{sec:orgfb8174d}
+\label{sec:orgf694c99}
 
 Class Design Patterns deal with the relationships between classes and their subclasses.
 The Object Design Patterns with the object relationships which can be changed at runtime.
@@ -95,11 +95,11 @@ The Object Design Patterns with the object relationships which can be changed at
 
 
 \section{Design Patterns}
-\label{sec:org0736d20}
+\label{sec:org4256371}
 \subsection{Creational Patterns}
-\label{sec:orgf4a1e2c}
+\label{sec:orgd150f6a}
 \subsubsection{Abstract Factory}
-\label{sec:orgc2dcdc1}
+\label{sec:org94efb07}
 The Abstract Factory provides an interface for creating families of related or dependent objects without specifying their concrete class.
 It is a good choice, when you want to create big class hierarchy from a factory.
 In general the Simple Factory is more common today.
@@ -124,7 +124,7 @@ After creation only this factory must be used to create objects.
 Otherwise, the benefit of the factory are gone.
 
 \subsubsection{Builder}
-\label{sec:org6e88d71}
+\label{sec:org7155ffc}
 The Builder Pattern separates the construction of a complex class from its representation.
 Thereby you can hide the creation of complex objects behind functions.
 
@@ -135,7 +135,7 @@ Thereby you can hide the creation of complex objects behind functions.
 \caption{\label{fig:builder-class-diagram}Builder Class Diagram}
 \end{figure}
 \subsubsection{Factory Method}
-\label{sec:orgdd5dc83}
+\label{sec:orgdc46efc}
 The Factory Method is used to create an object, but the subclass decides which class is instantiated.
 With this pattern you can create concrete creators which can decide which concrete product should be created.
 The user of the creator only has to use the interface.
@@ -148,7 +148,7 @@ The user of the creator only has to use the interface.
 \end{figure}
 
 \subsubsection{Prototype}
-\label{sec:org09c764f}
+\label{sec:org9b54140}
 The prototype pattern is something similar for objects like the factory method is for classes.
 Using the prototype pattern you create copies from concrete objects.
 This is achieved by cloning the prototype.
@@ -166,7 +166,7 @@ During the implementation you have to decide if you want to do a deep copy or a 
 \end{figure}
 
 \subsubsection{Singleton}
-\label{sec:orgd3b9bf2}
+\label{sec:orgbbc3783}
 The Singleton pattern ensures that a class has only one (global) instance.
 Additionally, it provides easy access to this element.
 
@@ -192,9 +192,9 @@ class SingletonFactory {
 \end{lstlisting}
 
 \subsection{Structural Patterns}
-\label{sec:orga3ea2e8}
+\label{sec:org31e727e}
 \subsubsection{Adapter}
-\label{sec:org11d2cd0}
+\label{sec:org86a6699}
 The Adapter Design Pattern is used to make a class compatible to others (like a power adapter).
 The adapter pattern has two different types:
 \begin{itemize}
@@ -229,7 +229,7 @@ The class adapter is not often used because many languages do not support multi-
 \end{figure}
 
 \subsubsection{Bridge}
-\label{sec:org015c435}
+\label{sec:org49f0341}
 The Bridge Design Pattern is used to decouple an abstraction from its implementation so that the two can vary independently.
 
 \begin{figure}[htbp]
@@ -244,7 +244,7 @@ The client (your application) should be able to create windows, without committi
 Only your window implementation should depend on the target platform (X, Windows).
 
 \subsubsection{Composite}
-\label{sec:orgc3a109e}
+\label{sec:org1bf61f8}
 The Composite Design Pattern is used to model a part-whole hierarchy.
 The pattern let clients treat individual and compositions of objects uniformly.
 
@@ -283,7 +283,7 @@ The \texttt{Draw} function iterates over all children and calls their \texttt{Dr
 
 
 \subsubsection{Decorator}
-\label{sec:orgd705ebd}
+\label{sec:orgb920c05}
 The Decorater Pattern is used to attach additional responsibility (features) to an object dynamically.
 For example, a class implements only the login mechanism.
 Using the decorater pattern exception handling can be done in a separate class.
@@ -296,7 +296,7 @@ Using the decorater pattern exception handling can be done in a separate class.
 \end{figure}
 
 \subsubsection{Facade}
-\label{sec:orgb611c4a}
+\label{sec:orgad04c51}
 The Facade Design Pattern is used to provide a simple interface to a set of interfaces (subsystem).
 For example the Compiler class provide an easy-to-use interface for the whole compiler subsystem (figure \ref{fig:facade-example}).
 
@@ -314,7 +314,7 @@ For example the Compiler class provide an easy-to-use interface for the whole co
 \caption{\label{fig:facade-example}Facade Example}
 \end{figure}
 \subsubsection{Flyweight}
-\label{sec:org1651a03}
+\label{sec:orge298217}
 The Flyweight pattern is used to support large number of objects efficiently.
 For example, you can store every character in its own object.
 In a document with 1000 characters you need more than 1000 objects.
@@ -339,7 +339,7 @@ Instead, creating every time a new object with the character "a" you always refe
 \end{figure}
 
 \subsubsection{Proxy}
-\label{sec:orgacc2052}
+\label{sec:orgc7587d5}
 The Proxy Design pattern provides a surrogate or placeholder for another object to control access to it.
 
 A Feed Reader must load the news from a (slow) server.
@@ -365,9 +365,9 @@ If the news are loaded, it returns the news.
 \end{figure}
 
 \subsection{Behavioral Patterns}
-\label{sec:org428e413}
+\label{sec:org5d8cbd2}
 \subsubsection{Chain of Responsibility}
-\label{sec:org5b1d968}
+\label{sec:orgba9ea63}
 The Chain of Responsibility is used to decouple the sender of a request to its receiver by giving more than one class the change to handle the request.
 The first object takes the request, check if it can handle.
 When yes, then handle it.
@@ -394,7 +394,7 @@ If not, forward the request to the parent / successor.
 \end{figure}
 
 \subsubsection{Command}
-\label{sec:org2d59473}
+\label{sec:orga96e99b}
 The command pattern is used to encapsulate actions / request inside an object.
 For example, the design of a framework does not know which action the button should perform.
 Therefore, the button is created using a command as parameter.
@@ -420,7 +420,7 @@ As soon as the user clicks on the button, the button executions the \texttt{comm
 \end{figure}
 
 \subsubsection{Interpreter}
-\label{sec:orge2a96f0}
+\label{sec:orgb3774b4}
 The Interpreter Design Pattern is used to interpret a simple grammar / language.
 Every grammar rule is modeled as one subclass.
 
@@ -435,7 +435,7 @@ Every grammar rule is modeled as one subclass.
 \textbf{My thoughts:}
 Before you implement your own interpreter consider a specialized library for this.
 \subsubsection{Iterator}
-\label{sec:orgcac0d3a}
+\label{sec:org21be07d}
 The iterator design pattern is used to access the items in a \href{../../../../roam/20210518131131-datastructure.org}{Data structure} (Aggregate in figure \ref{fig:iterator-class-diagram}).
 The benefit of iterator is that it hides the implementation details of the data structure.
 
@@ -446,7 +446,7 @@ The benefit of iterator is that it hides the implementation details of the data 
 \end{figure}
 
 \subsubsection{Mediator}
-\label{sec:orga88807a}
+\label{sec:org29b3bb9}
 The Mediator Design Pattern is used to encapsulate how a set of objects interact with each other.
 The different objects do not have to reference each other explicit.
 
@@ -477,7 +477,7 @@ Object A notifies the mediator that the value has changed.
 The mediator know notifies the other objects.
 
 \subsubsection{Memento}
-\label{sec:org5ee44f3}
+\label{sec:org7697be6}
 The Memento Design Pattern is used to store an internal state.
 This is often used for restoring the internal state of an object.
 
@@ -493,7 +493,7 @@ You can not change the memento and the inner live is unknown to the outer world.
 \end{figure}
 
 \subsubsection{Observer}
-\label{sec:org5ecdc79}
+\label{sec:org313c877}
 
 The goal of the Observer Pattern is to resolve a cyclic dependency.
 The Pattern consists of two objects:
@@ -514,7 +514,7 @@ Using this approach the domain does not have to need anything from the view (exc
 \end{figure}
 
 \subsubsection{State}
-\label{sec:org3e4b033}
+\label{sec:orgd97de8c}
 
 The state pattern is used allow an object to alter its internal behavior depending on its state.
 The object will appear to change its class.
@@ -539,8 +539,7 @@ The object will appear to change its class.
 \end{figure}
 
 \subsubsection{Strategy}
-\label{sec:orge14805c}
-
+\label{sec:org8bfaa0e}
 The Strategy Pattern is used to encapsulate an algorithm in an object.
 With this approach you can change the algorithm at runtime.
 
@@ -548,5 +547,49 @@ With this approach you can change the algorithm at runtime.
 \centering
 \includegraphics[width=0.6\textwidth]{img/strategy.png}
 \caption{\label{fig:strategy-class-diagram}Strategy Class Diagram}
+\end{figure}
+
+\subsubsection{Template Method}
+\label{sec:org5f6a943}
+Using the Template Method Pattern you write the skeleton for an algorithm in the base class.
+The functions which do something with data can be overwritten in a subclass.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.6\textwidth]{img/template_method.png}
+\caption{\label{fig:template-method-class-diagram}Template Method Class Diagram}
+\end{figure}
+
+\textbf{Example:}
+In an algorithm to traverse a tree in order you can implement a function \texttt{handleData()}.
+This function is called every time when the element is "in order".
+You have now one implementation of the algorithm, but you can handle the data differently using subclasses.
+
+\subsubsection{Visitor}
+\label{sec:org35d510d}
+The Visitor Patter is used to "visit" class hierarchy.
+The visitor can perform action on the visited elements (for example spell checking in a document).
+
+It is easy to implement a new Visitor (Just implement the Interface).
+However, extending the class hierarchy with a new subclass (a class \texttt{ConcreteClassC} in \ref{fig:visitor-class-diagram}\}) is very difficult.
+You have to extend the interface \texttt{Visitor} and therefore all implementations of this interface.
+
+\begin{figure}[h]
+  \centering
+  \begin{subfigure}{0.4\textwidth}
+    \centering
+    \includegraphics[width=3in]{img/visitor.png}
+    \caption{Visitor Class Diagram \label{fig:visitor-class-diagram}}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}{0.4\textwidth}
+    \centering
+    \includegraphics[width=3in]{img/visitor_sequence.png}
+    \caption{Visitor Sequence \label{fig:visitor-sequence}}
+  \end{subfigure}
+  \caption{
+    Visitor Diagrams
+    \label{fig:visitor-diagrams}
+  }
 \end{figure}
 \end{document}

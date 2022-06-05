@@ -510,7 +510,6 @@ The object will appear to change its class.
 #+end_src
 
 *** Strategy
-
 The Strategy Pattern is used to encapsulate an algorithm in an object.
 With this approach you can change the algorithm at runtime.
 
@@ -518,3 +517,46 @@ With this approach you can change the algorithm at runtime.
 #+NAME: fig:strategy-class-diagram
 #+ATTR_LATEX: :width 0.6\textwidth
 [[file:img/strategy.png]]
+
+*** Template Method
+Using the Template Method Pattern you write the skeleton for an algorithm in the base class.
+The functions which do something with data can be overwritten in a subclass.
+
+#+CAPTION: Template Method Class Diagram
+#+NAME: fig:template-method-class-diagram
+#+ATTR_LATEX: :width 0.6\textwidth
+[[file:img/template_method.png]]
+
+*Example:*
+In an algorithm to traverse a tree in order you can implement a function =handleData()=.
+This function is called every time when the element is "in order".
+You have now one implementation of the algorithm, but you can handle the data differently using subclasses.
+
+*** Visitor
+The Visitor Patter is used to "visit" class hierarchy.
+The visitor can perform action on the visited elements (for example spell checking in a document).
+
+It is easy to implement a new Visitor (Just implement the Interface).
+However, extending the class hierarchy with a new subclass (a class =ConcreteClassC= in ref:fig:visitor-class-diagram}) is very difficult.
+You have to extend the interface =Visitor= and therefore all implementations of this interface.
+
+#+begin_src latex
+  \begin{figure}[h]
+    \centering
+    \begin{subfigure}{0.4\textwidth}
+      \centering
+      \includegraphics[width=3in]{img/visitor.png}
+      \caption{Visitor Class Diagram \label{fig:visitor-class-diagram}}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.4\textwidth}
+      \centering
+      \includegraphics[width=3in]{img/visitor_sequence.png}
+      \caption{Visitor Sequence \label{fig:visitor-sequence}}
+    \end{subfigure}
+    \caption{
+      Visitor Diagrams
+      \label{fig:visitor-diagrams}
+    }
+  \end{figure}
+#+end_src
